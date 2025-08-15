@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Growth Farm — Digital-First Partner</title>
+    <meta name="description" content="Websites, Web Apps, Mobile Apps, and Growth — executed with clean UI, tasteful motion, and production-grade UX.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+    
+    <!-- Preconnect to portfolio sites for faster iframe loading -->
+    <link rel="preconnect" href="https://hicomindia.com" crossorigin>
+    <link rel="preconnect" href="https://hikalpaa.org" crossorigin>
+    <link rel="preconnect" href="https://www.thebtclub.com" crossorigin>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom CSS to match Landio Template Aesthetics */
+        :root {
+            --bg: #0B1220;
+            --surface: #111827;
+            --card: #0F172A;
+            --text: #E5E7EB;
+            --muted: #9CA3AF;
+            --primary: #6EE7B7;
+            --secondary: #60A5FA;
+            --accent: #F59E0B;
+            --border: rgba(255, 255, 255, 0.08);
+            --gradient-from: #111827;
+            --gradient-to: #0B1220;
+            --radius: 16px;
+            --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.35);
+            --font-primary: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+            --font-display: 'Poppins', 'Inter', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: var(--font-primary);
+        }
+
+        body {
+            overflow-x: hidden;
+            background-image: radial-gradient(1200px 800px at 65% -10%, rgba(110, 231, 183, 0.10), transparent 50%),
+                              radial-gradient(1200px 800px at 10% -10%, rgba(96, 165, 250, 0.08), transparent 50%),
+                              linear-gradient(180deg, var(--gradient-from) 0%, var(--gradient-to) 100%);
+            background-attachment: fixed;
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            width: 100vw;
+            height: 100vh;
+            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800"><filter id="noise-filter"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="4" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23noise-filter)"/></svg>');
+            opacity: 0.03;
+            z-index: -1;
+            pointer-events: none;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-display);
+            font-weight: 700;
+        }
+
+        h1 { font-size: clamp(32px, 6vw, 56px); line-height: 1.1; }
+        h2 { font-size: clamp(28px, 5vw, 48px); line-height: 1.2; }
+        h3 { font-size: clamp(20px, 3vw, 28px); line-height: 1.3; }
+        p { font-size: clamp(16px, 1.2vw, 18px); color: var(--muted); line-height: 1.6; }
+
+        .kicker {
+            color: var(--primary);
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.75rem 1.5rem;
+            border-radius: 9999px;
+            font-weight: 600;
+            transition: all 0.2s ease-in-out;
+            transform: translateZ(0);
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: var(--bg);
+            box-shadow: 0 4px 14px rgba(110, 231, 183, 0.25);
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(110, 231, 183, 0.3);
+        }
+        .btn-primary:disabled {
+            background-color: #3f5950;
+            box-shadow: none;
+            cursor: not-allowed;
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--text);
+            border: 1px solid var(--border);
+        }
+        .btn-secondary:hover {
+            background-color: var(--border);
+        }
+
+        .card {
+            background-color: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-lg);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+        }
+
+        .feature-card {
+             transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+        .feature-card:hover {
+            transform: translateY(-4px);
+            background-color: var(--surface);
+        }
+
+        /* Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.45s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .reveal {
+                transition-duration: 0.2s;
+            }
+            html {
+                scroll-behavior: auto;
+            }
+        }
+        
+        /* Header */
+        header {
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            background-color: rgba(11, 18, 32, 0.75);
+            border-bottom: 1px solid var(--border);
+        }
+        
+        section {
+             scroll-margin-top: 80px; /* Match header height */
+        }
+
+        /* Active Nav Link */
+        nav a.active {
+            color: var(--primary);
+        }
+        
+        /* FAQ Accordion */
+        .faq-item details > summary { list-style: none; }
+        .faq-item details > summary::-webkit-details-marker { display: none; }
+        .faq-item details[open] summary .icon-plus { transform: rotate(45deg); }
+        
+        /* Skip to content link */
+        .skip-link { position: absolute; top: -40px; left: 0; background: var(--primary); color: var(--bg); padding: 8px; z-index: 100; transition: top 0.3s; }
+        .skip-link:focus { top: 0; }
+        
+        /* Focus visible */
+        :focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; border-radius: 4px; }
+
+        /* Portfolio Slideshow */
+        .slideshow-container {
+            position: relative;
+            width: 100%;
+            max-width: 1200px;
+            margin: auto;
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+        }
+        .slideshow-wrapper {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+        .slide {
+            flex: 0 0 100%;
+            position: relative;
+            aspect-ratio: 16 / 10;
+        }
+        .slide iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+        .slide-loader {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--surface);
+            z-index: 1;
+            transition: opacity 0.3s ease-in-out;
+        }
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid var(--border);
+            border-top-color: var(--primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        .slideshow-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 1rem;
+            pointer-events: none;
+            z-index: 10;
+        }
+        .slideshow-nav button {
+            background-color: rgba(15, 23, 42, 0.7);
+            border: 1px solid var(--border);
+            border-radius: 50%;
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text);
+            cursor: pointer;
+            pointer-events: all;
+            transition: all 0.2s ease;
+        }
+        .slideshow-nav button:hover {
+            background-color: var(--primary);
+            color: var(--bg);
+        }
+        .slide-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 1rem;
+            background: linear-gradient(to top, rgba(11,18,32,0.8), transparent);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Contact Form */
+        .form-input {
+            width: 100%;
+            background-color: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 0.75rem 1rem;
+            color: var(--text);
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 2px rgba(110, 231, 183, 0.3);
+        }
+        .form-select {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%239CA3AF' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+            background-position: right 0.5rem center;
+            background-repeat: no-repeat;
+            background-size: 1.5em 1.5em;
+        }
+        #form-message {
+            display: none;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            text-align: center;
+        }
+        #form-message.success {
+            background-color: rgba(110, 231, 183, 0.1);
+            border: 1px solid rgba(110, 231, 183, 0.3);
+            color: var(--primary);
+        }
+        #form-message.error {
+            background-color: rgba(248, 113, 113, 0.1);
+            border: 1px solid rgba(248, 113, 113, 0.3);
+            color: #f87171;
+        }
+
+        /* AI Section */
+        #ai-solution-textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+        #ai-response {
+            background-color: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1rem;
+            margin-top: 1.5rem;
+            min-height: 80px;
+            display: none;
+        }
+        #ai-response strong {
+            color: var(--primary);
+        }
+
+    </style>
+</head>
+<body class="antialiased">
+
+    <a href="#main" class="skip-link">Skip to content</a>
+
+    <!-- Header -->
+    <header id="header" class="sticky top-0 z-50 w-full">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <div class="flex-shrink-0 mr-auto">
+                    <a href="#" class="text-2xl font-bold text-white" aria-label="Growth Farm Home">
+                       Growth Farm
+                    </a>
+                </div>
+                <nav id="desktop-nav" class="hidden md:flex items-center" role="navigation" aria-label="Primary">
+                    <ul class="flex items-center">
+                        <li><a href="#features" class="font-medium text-gray-300 hover:text-primary px-4 py-2 transition duration-150 ease-in-out">Services</a></li>
+                        <li><a href="#portfolio" class="font-medium text-gray-300 hover:text-primary px-4 py-2 transition duration-150 ease-in-out">Portfolio</a></li>
+                        <li><a href="#contact" class="font-medium text-gray-300 hover:text-primary px-4 py-2 transition duration-150 ease-in-out">Contact</a></li>
+                        <li><a href="#faq" class="font-medium text-gray-300 hover:text-primary px-4 py-2 transition duration-150 ease-in-out">FAQ</a></li>
+                    </ul>
+                </nav>
+                 <div class="hidden md:flex items-center ml-4">
+                    <a href="https://calendly.com/growth-farm" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Book a Call</a>
+                </div>
+                <div class="flex md:hidden">
+                    <button id="hamburger" class="hamburger" aria-controls="mobile-nav" aria-expanded="false">
+                        <span class="sr-only">Open main menu</span>
+                        <svg class="w-6 h-6 fill-current text-gray-300" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect y="4" width="24" height="2" rx="1"/><rect y="11" width="24" height="2" rx="1"/><rect y="18" width="24" height="2" rx="1"/></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="mobile-nav" class="hidden md:hidden absolute top-full left-0 w-full bg-surface border-t border-border transition-all duration-300 ease-in-out" style="max-height: 0; overflow: hidden;">
+            <nav class="p-4">
+                <ul class="flex flex-col space-y-2">
+                    <li><a href="#features" class="block font-medium text-gray-300 hover:text-primary px-4 py-2">Services</a></li>
+                    <li><a href="#portfolio" class="block font-medium text-gray-300 hover:text-primary px-4 py-2">Portfolio</a></li>
+                    <li><a href="#contact" class="block font-medium text-gray-300 hover:text-primary px-4 py-2">Contact</a></li>
+                    <li><a href="#faq" class="block font-medium text-gray-300 hover:text-primary px-4 py-2">FAQ</a></li>
+                    <li><a href="https://calendly.com/growth-farm" target="_blank" rel="noopener noreferrer" class="btn btn-primary w-full mt-4">Book a Call</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main id="main">
+
+        <!-- Hero Section -->
+        <section id="hero" class="relative pt-32 pb-20 md:pt-40 md:pb-28 text-center">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="max-w-4xl mx-auto">
+                    <p class="kicker mb-4 reveal">Digital-First Agency</p>
+                    <h1 class="text-white mb-6 reveal" style="animation-delay: 100ms;">Ship a high-converting site, fast.</h1>
+                    <p class="text-xl max-w-2xl mx-auto mb-8 reveal" style="animation-delay: 200ms;">Growth Farm builds modern websites, apps, and growth engines with clean UI, tasteful motion, and measurable performance.</p>
+                    <div class="flex flex-col sm:flex-row justify-center gap-4 reveal" style="animation-delay: 300ms;">
+                        <a href="https://calendly.com/growth-farm" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Book a Call</a>
+                        <a href="#features" class="btn btn-secondary">Our Services</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- AI Solution Finder Section -->
+        <section id="ai-solution" class="py-20 md:py-28">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="max-w-3xl mx-auto text-center pb-12">
+                    <h2 class="text-white mb-4 reveal">Discover Your Solution</h2>
+                    <p class="text-xl reveal" style="animation-delay: 100ms;">Describe your business challenge, and our AI will suggest the best services to help you succeed.</p>
+                </div>
+                <div class="max-w-2xl mx-auto">
+                    <div class="reveal" style="animation-delay: 200ms;">
+                        <label for="ai-solution-textarea" class="sr-only">Describe your problem</label>
+                        <textarea id="ai-solution-textarea" class="form-input" placeholder="e.g., 'I need a new e-commerce website to sell my products online and attract more customers.'"></textarea>
+                        <div class="text-center mt-6">
+                            <button id="ai-analyze-btn" class="btn btn-primary">Analyze My Problem</button>
+                        </div>
+                    </div>
+                    <div id="ai-response" class="reveal" style="animation-delay: 300ms;"></div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Features Section -->
+        <section id="features" class="py-20 md:py-28 bg-surface">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="max-w-3xl mx-auto text-center pb-12 md:pb-20">
+                    <h2 class="text-white mb-4 reveal">Our Core Services</h2>
+                    <p class="text-xl reveal" style="animation-delay: 100ms;">Everything you need to build, launch, and grow your digital presence.</p>
+                </div>
+                <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div class="feature-card text-center p-6 rounded-lg reveal">
+                        <div class="flex items-center justify-center h-16 w-16 rounded-full bg-primary/10 mx-auto mb-4 border border-primary/20">
+                            <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122"></path></svg>
+                        </div>
+                        <h3 class="text-white mb-2">Website Design</h3>
+                        <p>Crafting visually stunning and intuitive websites that captivate your audience and reflect your brand's essence.</p>
+                    </div>
+                    <div class="feature-card text-center p-6 rounded-lg reveal" style="animation-delay: 150ms;">
+                        <div class="flex items-center justify-center h-16 w-16 rounded-full bg-primary/10 mx-auto mb-4 border border-primary/20">
+                           <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
+                        </div>
+                        <h3 class="text-white mb-2">Web App Development</h3>
+                        <p>Building robust, scalable, and high-performance web applications tailored to your specific business needs.</p>
+                    </div>
+                    <div class="feature-card text-center p-6 rounded-lg reveal" style="animation-delay: 300ms;">
+                        <div class="flex items-center justify-center h-16 w-16 rounded-full bg-primary/10 mx-auto mb-4 border border-primary/20">
+                            <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                        </div>
+                        <h3 class="text-white mb-2">Mobile App Development</h3>
+                        <p>Creating seamless and engaging mobile experiences for iOS and Android that connect you with your users on the go.</p>
+                    </div>
+                    <div class="feature-card text-center p-6 rounded-lg reveal" style="animation-delay: 450ms;">
+                        <div class="flex items-center justify-center h-16 w-16 rounded-full bg-primary/10 mx-auto mb-4 border border-primary/20">
+                            <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
+                        </div>
+                        <h3 class="text-white mb-2">Digital Marketing</h3>
+                        <p>Driving measurable growth through performance marketing, SEO, and strategic digital branding campaigns.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Portfolio Section -->
+        <section id="portfolio" class="py-20 md:py-28">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="max-w-3xl mx-auto text-center pb-12 md:pb-20">
+                    <h2 class="text-white mb-4 reveal">Our Work in Action</h2>
+                    <p class="text-xl reveal" style="animation-delay: 100ms;">An interactive look at some of our live projects.</p>
+                </div>
+                <div id="portfolio-slideshow" class="slideshow-container reveal">
+                    <div class="slideshow-wrapper">
+                        <!-- Slides will be injected by JS -->
+                    </div>
+                    <div class="slideshow-nav">
+                        <button id="prev-slide" aria-label="Previous Slide">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                        </button>
+                        <button id="next-slide" aria-label="Next Slide">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                        </button>
+                    </div>
+                    <div class="slide-info">
+                        <p id="slide-label" class="font-bold text-white"></p>
+                        <a id="slide-link" href="#" target="_blank" rel="noopener noreferrer" class="text-sm text-primary hover:underline flex items-center gap-1">
+                            Visit Site
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Form Section -->
+        <section id="contact" class="py-20 md:py-28 bg-surface">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="max-w-3xl mx-auto text-center pb-12">
+                    <h2 class="text-white mb-4 reveal">Get in Touch</h2>
+                    <p class="text-xl reveal" style="animation-delay: 100ms;">Have a project in mind? Let's talk about it.</p>
+                </div>
+                <div class="max-w-2xl mx-auto">
+                    <form id="contact-form" class="space-y-6 reveal" style="animation-delay: 200ms;">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="name" class="block text-sm font-medium text-gray-300 mb-2">Name</label>
+                                <input type="text" id="name" name="name" required class="form-input">
+                            </div>
+                            <div>
+                                <label for="company" class="block text-sm font-medium text-gray-300 mb-2">Company Name</label>
+                                <input type="text" id="company" name="company" class="form-input">
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-gray-300 mb-2">Email</label>
+                                <input type="email" id="email" name="email" required class="form-input">
+                            </div>
+                            <div>
+                                <label for="phone" class="block text-sm font-medium text-gray-300 mb-2">Phone Number</label>
+                                <input type="tel" id="phone" name="phone" class="form-input">
+                            </div>
+                        </div>
+                        <div>
+                            <label for="services" class="block text-sm font-medium text-gray-300 mb-2">Required Services</label>
+                            <select id="services" name="services" required class="form-input form-select">
+                                <!-- Options will be injected by JS -->
+                            </select>
+                        </div>
+                        <div class="text-center pt-4">
+                            <button type="submit" id="submit-button" class="btn btn-primary w-full md:w-auto">Send Message</button>
+                        </div>
+                    </form>
+                    <div id="form-message" aria-live="polite"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section id="faq" class="py-20 md:py-28">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="max-w-3xl mx-auto text-center pb-12">
+                    <h2 class="text-white mb-4 reveal">Your Questions, Answered</h2>
+                </div>
+                <div class="max-w-3xl mx-auto">
+                    <div class="space-y-4">
+                        <div class="faq-item card p-6 reveal">
+                            <details>
+                                <summary class="flex justify-between items-center cursor-pointer">
+                                    <h3 class="text-white text-lg font-semibold">How much does a project typically cost?</h3>
+                                    <div class="icon-plus text-primary transition-transform duration-300"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg></div>
+                                </summary>
+                                <div class="pt-4">
+                                    <p>Project costs vary widely based on scope and complexity. A simple marketing site might start in the low thousands, while a complex web application can be significantly more. We provide a detailed, fixed-price quote after our initial discovery call where we understand your specific needs.</p>
+                                </div>
+                            </details>
+                        </div>
+                        <div class="faq-item card p-6 reveal" style="animation-delay: 100ms;">
+                            <details>
+                                <summary class="flex justify-between items-center cursor-pointer">
+                                    <h3 class="text-white text-lg font-semibold">What's included in a standard website package?</h3>
+                                    <div class="icon-plus text-primary transition-transform duration-300"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg></div>
+                                </summary>
+                                <div class="pt-4">
+                                    <p>Every project is tailored, but a typical package includes a discovery and strategy session, custom UI/UX design, full development, mobile-responsive design, basic on-page SEO, and training on how to manage your new site. We ensure you have everything you need for a successful launch.</p>
+                                </div>
+                            </details>
+                        </div>
+                        <div class="faq-item card p-6 reveal" style="animation-delay: 200ms;">
+                            <details>
+                                <summary class="flex justify-between items-center cursor-pointer">
+                                    <h3 class="text-white text-lg font-semibold">What happens after my project is launched?</h3>
+                                    <div class="icon-plus text-primary transition-transform duration-300"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg></div>
+                                </summary>
+                                <div class="pt-4">
+                                    <p>We offer a 30-day post-launch support period to fix any bugs. Beyond that, we provide ongoing monthly maintenance and support retainers to keep your site secure, updated, and performing optimally. We can also partner with you on a growth retainer for continuous improvements and marketing efforts.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-surface border-t border-border">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="md:col-span-1"><div class="mb-4"><a href="#" class="text-2xl font-bold text-white">Growth Farm</a></div><p class="text-sm">Your digital-first partner for websites, web apps, mobile apps, and growth.</p></div>
+                <div class="md:col-span-1"><h4 class="text-white font-semibold mb-4">Contact Us</h4><ul class="space-y-2 text-sm"><li><a href="tel:+917007705861" class="hover:text-primary transition-colors">Phone: +91 7007705861</a></li><li><a href="mailto:works.prabhakar.gmail.com" class="hover:text-primary transition-colors">Email: works.prabhakar.gmail.com</a></li><li><a href="https://calendly.com/growth-farm" target="_blank" rel="noopener noreferrer" class="hover:text-primary transition-colors">Book a Call</a></li></ul></div>
+                <div class="md:col-span-1"><h4 class="text-white font-semibold mb-4">Quick Links</h4><ul class="space-y-2 text-sm"><li><a href="#features" class="hover:text-primary transition-colors">Services</a></li><li><a href="#portfolio" class="hover:text-primary transition-colors">Portfolio</a></li><li><a href="#contact" class="hover:text-primary transition-colors">Contact</a></li><li><a href="#faq" class="hover:text-primary transition-colors">FAQ</a></li></ul></div>
+            </div>
+            <div class="mt-8 border-t border-border pt-8 text-center text-sm text-gray-500">&copy; 2024 Growth Farm. All rights reserved.</div>
+        </div>
+    </footer>
+
+
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+
+        // --- Configuration ---
+        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzpXYXPZ_F3cvTxhfdJGrcmF-g7XLrXvriyhWeLvGrFTny8Xc3jW4M85ue-2Zt3hfhhsg/exec';
+
+        const portfolioSites = [
+            { "label": "hicomindia.com", "url": "https://hicomindia.com" },
+            { "label": "hikalpaa.org", "url": "https://hikalpaa.org" },
+            { "label": "thebtclub.com", "url": "https://www.thebtclub.com" },
+            { "label": "hixindia.com", "url": "https://hixindia.com" },
+            { "label": "hcinrealty.com", "url": "https://hcinrealty.com" },
+            { "label": "notrediem.com", "url": "https://notrediem.com" },
+            { "label": "fifthpocket.com", "url": "https://fifthpocket.com" },
+            { "label": "stradda.com", "url": "https://stradda.com" }
+        ];
+
+        const services = [
+            "Website Design", "Website Development", "Web App Development",
+            "Mobile App Development", "Digital Marketing", "Performance Marketing Services",
+            "Digital Branding", "SEO & GEO"
+        ];
+
+        // --- Mobile Navigation ---
+        const hamburger = document.getElementById('hamburger');
+        const mobileNav = document.getElementById('mobile-nav');
+        const mobileNavLinks = mobileNav.querySelectorAll('a');
+        const toggleMobileNav = () => {
+            const isExpanded = hamburger.getAttribute('aria-expanded') === 'true';
+            hamburger.setAttribute('aria-expanded', !isExpanded);
+            if (!isExpanded) {
+                mobileNav.classList.remove('hidden');
+                void mobileNav.offsetWidth; 
+                mobileNav.style.maxHeight = mobileNav.scrollHeight + 'px';
+            } else {
+                mobileNav.style.maxHeight = '0';
+                mobileNav.addEventListener('transitionend', () => {
+                    if (mobileNav.style.maxHeight === '0px') mobileNav.classList.add('hidden');
+                }, { once: true });
+            }
+        };
+        hamburger.addEventListener('click', toggleMobileNav);
+        mobileNavLinks.forEach(link => link.addEventListener('click', () => {
+            if (hamburger.getAttribute('aria-expanded') === 'true') toggleMobileNav();
+        }));
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && hamburger.getAttribute('aria-expanded') === 'true') toggleMobileNav();
+        });
+
+        // --- Intersection Observer for Animations ---
+        const revealElements = document.querySelectorAll('.reveal');
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { root: null, rootMargin: '0px', threshold: 0.1 });
+        revealElements.forEach(el => observer.observe(el));
+
+        // --- Active Navigation Link highlighting on Scroll ---
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('#desktop-nav a, #mobile-nav a');
+        const headerHeight = document.getElementById('header').offsetHeight;
+        const scrollObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const id = entry.target.getAttribute('id');
+                    navLinks.forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('href') === `#${id}`) link.classList.add('active');
+                    });
+                }
+            });
+        }, { rootMargin: `-${headerHeight}px 0px -50% 0px` });
+        sections.forEach(section => scrollObserver.observe(section));
+        
+        // --- AI Solution Finder ---
+        const aiAnalyzeBtn = document.getElementById('ai-analyze-btn');
+        const aiTextarea = document.getElementById('ai-solution-textarea');
+        const aiResponseEl = document.getElementById('ai-response');
+
+        const problemPatterns = {
+            'ad-performance': {
+                keywords: ['roas', 'cpc', 'ads not working', 'poor return', 'ad spend'],
+                analysis: 'Poor ad performance can stem from several factors, such as creative fatigue, audience targeting issues, or inefficient campaign structures.',
+                services: ['Performance Marketing Services', 'Digital Branding']
+            },
+            'low-traffic': {
+                keywords: ['no traffic', 'low visitors', "can't find on google", 'seo'],
+                analysis: 'Low website traffic is often related to search engine visibility or a lack of effective marketing channels.',
+                services: ['SEO & GEO', 'Digital Marketing']
+            },
+            'bad-design': {
+                keywords: ['looks old', 'bad design', 'not user-friendly', 'confusing ui', 'high bounce rate'],
+                analysis: 'An outdated or confusing design can lead to a poor user experience and high bounce rates, directly impacting conversions.',
+                services: ['Website Design']
+            },
+            'new-build': {
+                keywords: ['need a website', 'build an app', 'sell online', 'e-commerce', 'new site'],
+                analysis: 'Building a new digital platform requires a clear strategy for both development and user acquisition.',
+                services: ['Website Development', 'Web App Development', 'Mobile App Development']
+            }
+        };
+
+        aiAnalyzeBtn.addEventListener('click', () => {
+            const problem = aiTextarea.value.toLowerCase();
+            if (problem.trim() === '') {
+                aiResponseEl.innerHTML = 'Please describe your problem first.';
+                aiResponseEl.style.display = 'block';
+                return;
+            }
+
+            let matchedPattern = null;
+            for (const key in problemPatterns) {
+                const pattern = problemPatterns[key];
+                if (pattern.keywords.some(kw => problem.includes(kw))) {
+                    matchedPattern = pattern;
+                    break;
+                }
+            }
+
+            let responseHTML;
+            if (matchedPattern) {
+                responseHTML = `<p>${matchedPattern.analysis}</p><p class="mt-4">Based on this, we recommend exploring our following services:</p><ul class="list-disc list-inside mt-2">`;
+                matchedPattern.services.forEach(service => {
+                    responseHTML += `<li><strong>${service}</strong></li>`;
+                });
+                responseHTML += `</ul><p class="mt-4">To discuss this further, please fill out our contact form or book a call.</p>`;
+            } else {
+                responseHTML = `<p>Thank you for your interest. To get a detailed analysis and solution, please fill out the contact form below, and our experts will get in touch with you shortly.</p>`;
+            }
+            
+            aiResponseEl.innerHTML = responseHTML;
+            aiResponseEl.style.display = 'block';
+        });
+
+
+        // --- Portfolio Slideshow ---
+        const slideshowWrapper = document.querySelector('.slideshow-wrapper');
+        if (slideshowWrapper) {
+            portfolioSites.forEach(site => {
+                const slide = document.createElement('div');
+                slide.className = 'slide';
+                slide.innerHTML = `
+                    <div class="slide-loader"><div class="spinner"></div></div>
+                    <iframe loading="lazy" data-src="${site.url}" title="${site.label} homepage" sandbox="allow-scripts allow-same-origin"></iframe>
+                `;
+                slideshowWrapper.appendChild(slide);
+            });
+
+            const slides = document.querySelectorAll('.slide');
+            const prevButton = document.getElementById('prev-slide');
+            const nextButton = document.getElementById('next-slide');
+            const slideLabel = document.getElementById('slide-label');
+            const slideLink = document.getElementById('slide-link');
+            let currentIndex = 0;
+
+            const updateSlide = (index) => {
+                slideshowWrapper.style.transform = `translateX(-${index * 100}%)`;
+                const currentSite = portfolioSites[index];
+                slideLabel.textContent = currentSite.label;
+                slideLink.href = currentSite.url;
+
+                // Lazy load iframe
+                const iframe = slides[index].querySelector('iframe');
+                const loader = slides[index].querySelector('.slide-loader');
+                if (iframe.src === '' && iframe.dataset.src) {
+                    iframe.src = iframe.dataset.src;
+                    iframe.onload = () => {
+                        if(loader) {
+                           loader.style.opacity = '0';
+                           setTimeout(() => loader.style.display = 'none', 300);
+                        }
+                    };
+                }
+            };
+            
+            prevButton.addEventListener('click', () => {
+                currentIndex = (currentIndex > 0) ? currentIndex - 1 : slides.length - 1;
+                updateSlide(currentIndex);
+            });
+            
+            nextButton.addEventListener('click', () => {
+                currentIndex = (currentIndex < slides.length - 1) ? currentIndex + 1 : 0;
+                updateSlide(currentIndex);
+            });
+
+            // Initial load
+            updateSlide(0);
+        }
+
+        // --- Contact Form ---
+        const contactForm = document.getElementById('contact-form');
+        const servicesSelect = document.getElementById('services');
+        const submitButton = document.getElementById('submit-button');
+        const formMessage = document.getElementById('form-message');
+
+        // Populate services dropdown
+        if (servicesSelect) {
+            services.forEach(service => {
+                const option = document.createElement('option');
+                option.value = service;
+                option.textContent = service;
+                servicesSelect.appendChild(option);
+            });
+        }
+
+        if (contactForm) {
+            contactForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                
+                if (!GOOGLE_SCRIPT_URL || GOOGLE_SCRIPT_URL === 'PASTE_YOUR_GOOGLE_SCRIPT_URL_HERE') {
+                    console.error("Google Script URL is not set. Form submission is disabled.");
+                    formMessage.textContent = 'Form submission is currently disabled.';
+                    formMessage.className = 'error';
+                    formMessage.style.display = 'block';
+                    return;
+                }
+
+                const formData = new FormData(contactForm);
+                const originalButtonText = submitButton.textContent;
+                submitButton.disabled = true;
+                submitButton.textContent = 'Sending...';
+                formMessage.style.display = 'none';
+
+                fetch(GOOGLE_SCRIPT_URL, {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.result === 'success') {
+                        contactForm.reset();
+                        formMessage.textContent = 'Thank you! Your message has been sent.';
+                        formMessage.className = 'success';
+                    } else {
+                        throw new Error(data.message || 'An unknown error occurred.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    formMessage.textContent = 'Sorry, there was an error sending your message. Please try again later.';
+                    formMessage.className = 'error';
+                })
+                .finally(() => {
+                    submitButton.disabled = false;
+                    submitButton.textContent = originalButtonText;
+                    formMessage.style.display = 'block';
+                    setTimeout(() => { formMessage.style.display = 'none'; }, 5000);
+                });
+            });
+        }
+    });
+    </script>
+</body>
+</html>
+
