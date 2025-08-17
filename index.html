@@ -1,349 +1,142 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Growth Farm — Digital-First Partner</title>
-    <meta name="description" content="Websites, Web Apps, Mobile Apps, and Growth — executed with clean UI, tasteful motion, and production-grade UX.">
+    <title>PixelPop — Digital-First Partner</title>
+    <meta name="description" content="PixelPop designs and builds modern websites, apps, and growth engines with clean UI, tasteful motion, and measurable ROI. We specialize in Jamstack, Headless CMS, and Performance Marketing.">
+    
+    <!-- SEO & Social Sharing Tags -->
+    <meta property="og:title" content="PixelPop — Digital-First Partner">
+    <meta property="og:description" content="Ship a stunning, high-converting site—fast. We design and build modern websites, apps, and growth engines.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://placehold.co/1200x630/EAF4FF/0B1220?text=PixelPop">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="PixelPop — Digital-First Partner">
+    <meta name="twitter:description" content="Ship a stunning, high-converting site—fast. We design and build modern websites, apps, and growth engines.">
+    <meta name="twitter:image" content="https://placehold.co/1200x630/EAF4FF/0B1220?text=PixelPop">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
     
-    <!-- Preconnect to portfolio sites for faster iframe loading -->
-    <link rel="preconnect" href="https://hicomindia.com" crossorigin>
-    <link rel="preconnect" href="https://hikalpaa.org" crossorigin>
-    <link rel="preconnect" href="https://www.thebtclub.com" crossorigin>
-
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* Custom CSS to match Landio Template Aesthetics */
+        /* --- Theme & Color Palette --- */
         :root {
-            --bg: #0B1220;
-            --surface: #111827;
-            --card: #0F172A;
-            --text: #E5E7EB;
-            --muted: #9CA3AF;
-            --primary: #6EE7B7;
-            --secondary: #60A5FA;
-            --accent: #F59E0B;
-            --border: rgba(255, 255, 255, 0.08);
-            --gradient-from: #111827;
-            --gradient-to: #0B1220;
-            --radius: 16px;
-            --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.35);
-            --font-primary: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-            --font-display: 'Poppins', 'Inter', sans-serif;
+            --bg: #EAF4FF; --surface: #F7FAFF; --card: #FFFFFF; --text: #0B1220;
+            --muted: #374151; --primary: #16A34A; --secondary: #0EA5E9; --accent: #F59E0B;
+            --border: rgba(2,6,23,0.08); --gradient-from: #EAF4FF; --gradient-to: #DDEBFF;
+            --shadow-lg: 0 10px 30px rgba(2,6,23,0.08);
+            --font-primary: 'Inter', system-ui, sans-serif; --font-display: 'Poppins', sans-serif;
         }
-
-        html {
-            scroll-behavior: smooth;
-            background-color: var(--bg);
-            color: var(--text);
-            font-family: var(--font-primary);
-        }
-
-        body {
-            overflow-x: hidden;
-            background-image: radial-gradient(1200px 800px at 65% -10%, rgba(110, 231, 183, 0.10), transparent 50%),
-                              radial-gradient(1200px 800px at 10% -10%, rgba(96, 165, 250, 0.08), transparent 50%),
-                              linear-gradient(180deg, var(--gradient-from) 0%, var(--gradient-to) 100%);
-            background-attachment: fixed;
-        }
-
-        body::after {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            width: 100vw;
-            height: 100vh;
-            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800"><filter id="noise-filter"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="4" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23noise-filter)"/></svg>');
-            opacity: 0.03;
-            z-index: -1;
-            pointer-events: none;
-        }
-        
-        h1, h2, h3, h4, h5, h6 {
-            font-family: var(--font-display);
-            font-weight: 700;
-        }
-
-        h1 { font-size: clamp(32px, 6vw, 56px); line-height: 1.1; }
-        h2 { font-size: clamp(28px, 5vw, 48px); line-height: 1.2; }
-        h3 { font-size: clamp(20px, 3vw, 28px); line-height: 1.3; }
-        p { font-size: clamp(16px, 1.2vw, 18px); color: var(--muted); line-height: 1.6; }
-
-        .kicker {
-            color: var(--primary);
-            font-weight: 600;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-        }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 0.75rem 1.5rem;
-            border-radius: 9999px;
-            font-weight: 600;
-            transition: all 0.2s ease-in-out;
-            transform: translateZ(0);
-        }
-
-        .btn-primary {
-            background-color: var(--primary);
-            color: var(--bg);
-            box-shadow: 0 4px 14px rgba(110, 231, 183, 0.25);
-        }
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(110, 231, 183, 0.3);
-        }
-        .btn-primary:disabled {
-            background-color: #3f5950;
-            box-shadow: none;
-            cursor: not-allowed;
-        }
-
-        .btn-secondary {
-            background-color: transparent;
-            color: var(--text);
-            border: 1px solid var(--border);
-        }
-        .btn-secondary:hover {
-            background-color: var(--border);
-        }
-
-        .card {
-            background-color: var(--card);
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            box-shadow: var(--shadow-lg);
-            overflow: hidden;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.4);
-        }
-
-        .feature-card {
-             transition: transform 0.3s ease, background-color 0.3s ease;
-        }
-        .feature-card:hover {
-            transform: translateY(-4px);
-            background-color: var(--surface);
-        }
-
-        /* Animations */
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.45s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1);
-        }
-        .reveal.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            .reveal {
-                transition-duration: 0.2s;
-            }
-            html {
-                scroll-behavior: auto;
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #0B1220; --surface: #0F172A; --card: #0B1220; --text: #E5E7EB;
+                --muted: #9CA3AF; --primary: #22C55E; --secondary: #38BDF8;
+                --border: rgba(255,255,255,0.08); --gradient-from: #0E1526; --gradient-to: #0B1220;
+                --shadow-lg: 0 10px 30px rgba(0,0,0,0.35);
             }
         }
-        
-        /* Header */
-        header {
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            background-color: rgba(11, 18, 32, 0.75);
-            border-bottom: 1px solid var(--border);
-        }
-        
-        section {
-             scroll-margin-top: 80px; /* Match header height */
-        }
 
-        /* Active Nav Link */
-        nav a.active {
-            color: var(--primary);
-        }
+        /* --- Base Styles --- */
+        html { scroll-behavior: smooth; background-color: var(--bg); color: var(--text); font-family: var(--font-primary); }
+        body { overflow-x: hidden; background-image: linear-gradient(180deg, var(--gradient-from) 0%, var(--gradient-to) 100%); background-attachment: fixed; }
+        body.case-study-open { overflow: hidden; }
+        body::after { content: ''; position: fixed; top: 0; left: 0; right: 0; bottom: 0; width: 100vw; height: 100vh; background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800"><filter id="noise-filter"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="4" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23noise-filter)"/></svg>'); opacity: 0.015; z-index: -1; pointer-events: none; }
+        @media (prefers-color-scheme: dark) { body::after { opacity: 0.03; } }
+        h1, h2, h3, h4, h5, h6 { font-family: var(--font-display); font-weight: 700; color: var(--text); }
+        h1 { font-size: clamp(2.25rem, 6.5vw, 4rem); line-height: 1.1; }
+        h2 { font-size: clamp(1.75rem, 5vw, 3rem); line-height: 1.2; }
+        h3 { font-size: clamp(1.25rem, 3vw, 1.75rem); line-height: 1.3; }
+        p { font-size: clamp(1rem, 1.2vw, 1.125rem); color: var(--muted); line-height: 1.7; }
+        .kicker { color: var(--primary); font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; }
+
+        /* --- Buttons & Interactive Elements --- */
+        .btn { display: inline-flex; align-items: center; justify-content: center; padding: 0.75rem 1.5rem; border-radius: 9999px; font-weight: 600; transition: all 0.2s cubic-bezier(0.2, 0.8, 0.2, 1); transform: translateZ(0); }
+        .btn-primary { background-color: var(--primary); color: #FFFFFF; box-shadow: 0 4px 14px rgba(22, 163, 74, 0.25); }
+        .btn-primary:hover { transform: translateY(-2px) scale(1.02); background-color: #22C55E; box-shadow: 0 8px 20px rgba(22, 163, 74, 0.3); }
+        .btn-primary:active { transform: translateY(0) scale(0.98); background-color: #15803D; }
+        .btn-primary:disabled { background-color: #166534; color: #A3A3A3; box-shadow: none; cursor: not-allowed; }
+        .btn-secondary { background-color: transparent; color: var(--text); border: 1px solid var(--border); }
+        .btn-secondary:hover { background-color: rgba(2, 6, 23, 0.06); transform: translateY(-2px); }
+        @media (prefers-color-scheme: dark) { .btn-secondary:hover { background-color: var(--border); } }
+
+        /* --- Components & Layout --- */
+        .card { background-color: var(--card); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow-lg); overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .card:hover { transform: translateY(-2px); box-shadow: 0 15px 35px rgba(2, 6, 23, 0.1); }
+        @media (prefers-color-scheme: dark) { .card:hover { box-shadow: 0 15px 35px rgba(0,0,0,0.4); } }
+
+        /* --- Header & Navigation --- */
+        header { backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); background-color: rgba(247, 250, 255, 0.8); border-bottom: 1px solid var(--border); }
+        @media (prefers-color-scheme: dark) { header { background-color: rgba(11, 18, 32, 0.75); } }
+        section { scroll-margin-top: 80px; }
+        nav a.active { color: var(--primary); }
         
-        /* FAQ Accordion */
+        /* --- Animations & Accessibility --- */
+        .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1); }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+        @media (prefers-reduced-motion: reduce) { .reveal { transition-duration: 0s; } html { scroll-behavior: auto; } }
+        .skip-link { position: absolute; top: -40px; left: 0; background: var(--primary); color: #FFFFFF; padding: 8px; z-index: 100; transition: top 0.3s; }
+        .skip-link:focus { top: 0; }
+        :focus-visible { outline: 2px solid var(--secondary); outline-offset: 2px; border-radius: 4px; }
+        
+        /* --- Component-Specific Styles --- */
+        .hero-art { position: absolute; top: 0; right: 0; bottom: 0; width: 50%; background: radial-gradient(circle at 100% 0%, rgba(14, 165, 233, 0.1), transparent 40%); pointer-events: none; }
+        .service-card details > summary { list-style: none; }
+        .service-card details > summary::-webkit-details-marker { display: none; }
+        .service-card details[open] summary .icon-plus { transform: rotate(45deg); }
+        .service-card .accordion-content { overflow: hidden; transition: height 0.25s cubic-bezier(0.2, 0.8, 0.2, 1); }
         .faq-item details > summary { list-style: none; }
         .faq-item details > summary::-webkit-details-marker { display: none; }
         .faq-item details[open] summary .icon-plus { transform: rotate(45deg); }
-        
-        /* Skip to content link */
-        .skip-link { position: absolute; top: -40px; left: 0; background: var(--primary); color: var(--bg); padding: 8px; z-index: 100; transition: top 0.3s; }
-        .skip-link:focus { top: 0; }
-        
-        /* Focus visible */
-        :focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; border-radius: 4px; }
-
-        /* Portfolio Slideshow */
-        .slideshow-container {
-            position: relative;
-            width: 100%;
-            max-width: 1200px;
-            margin: auto;
-            border-radius: var(--radius);
-            border: 1px solid var(--border);
-            overflow: hidden;
-            box-shadow: var(--shadow-lg);
-        }
-        .slideshow-wrapper {
-            display: flex;
-            transition: transform 0.5s ease-in-out;
-        }
-        .slide {
-            flex: 0 0 100%;
-            position: relative;
-            aspect-ratio: 16 / 10;
-        }
-        .slide iframe {
-            width: 100%;
-            height: 100%;
-            border: 0;
-        }
-        .slide-loader {
-            position: absolute;
-            inset: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: var(--surface);
-            z-index: 1;
-            transition: opacity 0.3s ease-in-out;
-        }
-        .spinner {
-            width: 50px;
-            height: 50px;
-            border: 4px solid var(--border);
-            border-top-color: var(--primary);
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-        }
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-        .slideshow-nav {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            padding: 0 1rem;
-            pointer-events: none;
-            z-index: 10;
-        }
-        .slideshow-nav button {
-            background-color: rgba(15, 23, 42, 0.7);
-            border: 1px solid var(--border);
-            border-radius: 50%;
-            width: 44px;
-            height: 44px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text);
-            cursor: pointer;
-            pointer-events: all;
-            transition: all 0.2s ease;
-        }
-        .slideshow-nav button:hover {
-            background-color: var(--primary);
-            color: var(--bg);
-        }
-        .slide-info {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            padding: 1rem;
-            background: linear-gradient(to top, rgba(11,18,32,0.8), transparent);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .slide-placeholder {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-            height: 100%;
-            background: var(--surface);
-        }
-
-        /* Contact Form */
-        .form-input {
-            width: 100%;
-            background-color: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 0.75rem 1rem;
-            color: var(--text);
-            transition: border-color 0.2s ease, box-shadow 0.2s ease;
-        }
-        .form-input:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 2px rgba(110, 231, 183, 0.3);
-        }
-        .form-select {
-            -webkit-appearance: none;
-            -moz-appearance: none;
-            appearance: none;
-            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%239CA3AF' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
-            background-position: right 0.5rem center;
-            background-repeat: no-repeat;
-            background-size: 1.5em 1.5em;
-        }
-        #form-message {
-            display: none;
-            padding: 1rem;
-            border-radius: 8px;
-            margin-top: 1rem;
-            text-align: center;
-        }
-        #form-message.success {
-            background-color: rgba(110, 231, 183, 0.1);
-            border: 1px solid rgba(110, 231, 183, 0.3);
-            color: var(--primary);
-        }
-        #form-message.error {
-            background-color: rgba(248, 113, 113, 0.1);
-            border: 1px solid rgba(248, 113, 113, 0.3);
-            color: #f87171;
-        }
-
-        /* AI Section */
-        #ai-solution-textarea {
-            resize: vertical;
-            min-height: 120px;
-        }
-        #ai-response {
-            background-color: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 1rem;
-            margin-top: 1.5rem;
-            min-height: 80px;
-            display: none;
-        }
-        #ai-response strong {
-            color: var(--primary);
-        }
-
+        .slideshow-container { position: relative; width: 100%; max-width: 1200px; margin: auto; border-radius: var(--radius); border: 1px solid var(--border); overflow: hidden; box-shadow: var(--shadow-lg); aspect-ratio: 16 / 10; max-height: 70vh; }
+        .slideshow-wrapper { display: flex; height: 100%; transition: transform 0.5s ease-in-out; }
+        .slide { flex: 0 0 100%; position: relative; height: 100%; }
+        .slide iframe, .slide-placeholder { width: 100%; height: 100%; border: 0; }
+        .slide-loader { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background-color: var(--surface); z-index: 1; transition: opacity 0.3s ease-in-out; }
+        .spinner { width: 50px; height: 50px; border: 4px solid var(--border); border-top-color: var(--primary); border-radius: 50%; animation: spin 1s linear infinite; }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        .slideshow-nav { position: absolute; top: 50%; transform: translateY(-50%); width: 100%; display: flex; justify-content: space-between; padding: 0 1rem; pointer-events: none; z-index: 10; }
+        .slideshow-nav button { background-color: rgba(15, 23, 42, 0.7); border: 1px solid var(--border); border-radius: 50%; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; color: var(--text); cursor: pointer; pointer-events: all; transition: all 0.2s ease; }
+        .slideshow-nav button:hover { background-color: var(--primary); color: #FFFFFF; }
+        .slide-info { position: absolute; bottom: 0; left: 0; right: 0; padding: 1rem; background: linear-gradient(to top, rgba(11,18,32,0.8), transparent); display: flex; justify-content: space-between; align-items: center; }
+        .slide-placeholder { display: flex; flex-direction: column; align-items: center; justify-content: center; background: var(--surface); }
+        .form-input { width: 100%; background-color: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 0.75rem 1rem; color: var(--text); transition: border-color 0.2s ease, box-shadow 0.2s ease; }
+        .form-input:focus { outline: none; border-color: var(--secondary); box-shadow: 0 0 0 2px rgba(14, 165, 233, 0.3); }
+        #form-message { display: none; padding: 1rem; border-radius: 8px; margin-top: 1rem; text-align: center; }
+        #form-message.success { background-color: rgba(22, 163, 74, 0.1); border: 1px solid rgba(22, 163, 74, 0.3); color: #15803d; }
+        #form-message.error { background-color: rgba(220, 38, 38, 0.1); border: 1px solid rgba(220, 38, 38, 0.3); color: #b91c1c; }
+        #ai-solution-textarea { resize: vertical; min-height: 120px; }
+        #ai-response { background-color: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 1rem; margin-top: 1.5rem; min-height: 80px; display: none; }
+        #ai-response strong { color: var(--primary); }
+        .case-study-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background-color: var(--bg); z-index: 100; overflow-y: auto; opacity: 0; transform: translateY(20px); transition: opacity 0.3s ease, transform 0.3s ease; pointer-events: none; }
+        .case-study-overlay.active { opacity: 1; transform: translateY(0); pointer-events: auto; }
+        .case-study-close-btn { position: fixed; top: 1rem; right: 1rem; z-index: 110; width: 44px; height: 44px; background-color: var(--surface); border: 1px solid var(--border); border-radius: 9999px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.2s ease; }
+        .case-study-close-btn:hover { transform: scale(1.1); background-color: var(--card); }
     </style>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      "name": "PixelPop",
+      "url": "https://your-domain.com",
+      "image": "https://placehold.co/1200x630/EAF4FF/0B1220?text=PixelPop",
+      "telephone": "+91 7007705861",
+      "email": "works.prabhakar.gmail.com",
+      "areaServed": {
+        "@type": "Country",
+        "name": "IN"
+      },
+      "serviceType": [
+        "Website Design",
+        "Web App Development",
+        "Mobile App Development",
+        "Digital Marketing",
+        "SEO"
+      ]
+    }
+    </script>
 </head>
 <body class="antialiased">
 
@@ -354,25 +147,25 @@
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-20">
                 <div class="flex-shrink-0">
-                    <a href="#" class="text-2xl font-bold text-white" aria-label="Growth Farm Home">
-                       Growth Farm
+                    <a href="#" class="text-2xl font-bold text-inherit" aria-label="PixelPop Home">
+                       PixelPop
                     </a>
                 </div>
                 <nav id="desktop-nav" class="hidden md:flex items-center" role="navigation" aria-label="Primary">
                     <ul class="flex items-center">
-                        <li><a href="#features" class="font-medium text-gray-300 hover:text-primary px-4 py-2 transition duration-150 ease-in-out">Services</a></li>
-                        <li><a href="#portfolio" class="font-medium text-gray-300 hover:text-primary px-4 py-2 transition duration-150 ease-in-out">Portfolio</a></li>
-                        <li><a href="#contact" class="font-medium text-gray-300 hover:text-primary px-4 py-2 transition duration-150 ease-in-out">Contact</a></li>
-                        <li><a href="#faq" class="font-medium text-gray-300 hover:text-primary px-4 py-2 transition duration-150 ease-in-out">FAQ</a></li>
+                        <li><a href="#features" class="font-medium text-gray-600 dark:text-gray-300 hover:text-primary px-4 py-2 transition duration-150 ease-in-out">Services</a></li>
+                        <li><a href="#portfolio" class="font-medium text-gray-600 dark:text-gray-300 hover:text-primary px-4 py-2 transition duration-150 ease-in-out">Work</a></li>
+                        <li><a href="#contact" class="font-medium text-gray-600 dark:text-gray-300 hover:text-primary px-4 py-2 transition duration-150 ease-in-out">Contact</a></li>
+                        <li><a href="#faq" class="font-medium text-gray-600 dark:text-gray-300 hover:text-primary px-4 py-2 transition duration-150 ease-in-out">FAQ</a></li>
                     </ul>
                 </nav>
                  <div class="hidden md:flex items-center ml-4">
                     <a href="https://calendly.com/growth-farm" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Book a Call</a>
                 </div>
                 <div class="flex md:hidden">
-                    <button id="hamburger" class="hamburger" aria-controls="mobile-nav" aria-expanded="false">
+                    <button id="hamburger" class="hamburger p-2 -mr-2" aria-controls="mobile-nav" aria-expanded="false">
                         <span class="sr-only">Open main menu</span>
-                        <svg class="w-6 h-6 fill-current text-gray-300" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect y="4" width="24" height="2" rx="1"/><rect y="11" width="24" height="2" rx="1"/><rect y="18" width="24" height="2" rx="1"/></svg>
+                        <svg class="w-6 h-6 fill-current text-gray-700 dark:text-gray-300" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect y="4" width="24" height="2" rx="1"/><rect y="11" width="24" height="2" rx="1"/><rect y="18" width="24" height="2" rx="1"/></svg>
                     </button>
                 </div>
             </div>
@@ -380,10 +173,10 @@
         <div id="mobile-nav" class="hidden md:hidden absolute top-full left-0 w-full bg-surface border-t border-border transition-all duration-300 ease-in-out" style="max-height: 0; overflow: hidden;">
             <nav class="p-4">
                 <ul class="flex flex-col space-y-2">
-                    <li><a href="#features" class="block font-medium text-gray-300 hover:text-primary px-4 py-2">Services</a></li>
-                    <li><a href="#portfolio" class="block font-medium text-gray-300 hover:text-primary px-4 py-2">Portfolio</a></li>
-                    <li><a href="#contact" class="block font-medium text-gray-300 hover:text-primary px-4 py-2">Contact</a></li>
-                    <li><a href="#faq" class="block font-medium text-gray-300 hover:text-primary px-4 py-2">FAQ</a></li>
+                    <li><a href="#features" class="block font-medium text-gray-700 dark:text-gray-300 hover:text-primary px-4 py-3 rounded-md">Services</a></li>
+                    <li><a href="#portfolio" class="block font-medium text-gray-700 dark:text-gray-300 hover:text-primary px-4 py-3 rounded-md">Work</a></li>
+                    <li><a href="#contact" class="block font-medium text-gray-700 dark:text-gray-300 hover:text-primary px-4 py-3 rounded-md">Contact</a></li>
+                    <li><a href="#faq" class="block font-medium text-gray-700 dark:text-gray-300 hover:text-primary px-4 py-3 rounded-md">FAQ</a></li>
                     <li><a href="https://calendly.com/growth-farm" target="_blank" rel="noopener noreferrer" class="btn btn-primary w-full mt-4">Book a Call</a></li>
                 </ul>
             </nav>
@@ -394,25 +187,32 @@
     <main id="main">
 
         <!-- Hero Section -->
-        <section id="hero" class="relative pt-32 pb-20 md:pt-40 md:pb-28 text-center">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="max-w-4xl mx-auto">
-                    <p class="kicker mb-4 reveal">Digital-First Agency</p>
-                    <h1 class="text-white mb-6 reveal" style="animation-delay: 100ms;">Ship a high-converting site, fast.</h1>
-                    <p class="text-xl max-w-2xl mx-auto mb-8 reveal" style="animation-delay: 200ms;">Growth Farm builds modern websites, apps, and growth engines with clean UI, tasteful motion, and measurable performance.</p>
-                    <div class="flex flex-col sm:flex-row justify-center gap-4 reveal" style="animation-delay: 300ms;">
+        <section id="hero" class="relative pt-24 pb-20 md:pt-32 md:pb-28">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center md:text-left">
+                <div class="max-w-xl">
+                    <p class="kicker mb-4 reveal">Digital-First Studio</p>
+                    <h1 class="mb-6 reveal" style="animation-delay: 100ms;">Ship a stunning, high-converting site—fast.</h1>
+                    <p class="text-xl max-w-2xl mb-8 reveal" style="animation-delay: 200ms;">PixelPop designs and builds modern websites, apps, and growth engines with clean UI, tasteful motion, and measurable ROI.</p>
+                    <div class="flex flex-col sm:flex-row justify-center md:justify-start gap-4 reveal" style="animation-delay: 300ms;">
                         <a href="https://calendly.com/growth-farm" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Book a Call</a>
-                        <a href="#features" class="btn btn-secondary">Our Services</a>
+                        <a href="#features" class="btn btn-secondary">See Services</a>
+                    </div>
+                    <div class="mt-12 grid grid-cols-2 sm:grid-cols-4 gap-4 text-center md:text-left text-sm font-medium text-muted reveal" style="animation-delay: 400ms;">
+                        <span>✓ Fast turnarounds</span>
+                        <span>✓ Conversion-first UX</span>
+                        <span>✓ Production-grade code</span>
+                        <span>✓ SEO & performance baked in</span>
                     </div>
                 </div>
             </div>
+            <div class="hero-art hidden md:block" aria-hidden="true"></div>
         </section>
 
         <!-- AI Solution Finder Section -->
         <section id="ai-solution" class="py-20 md:py-28">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="max-w-3xl mx-auto text-center pb-12">
-                    <h2 class="text-white mb-4 reveal">Discover Your Solution</h2>
+                    <h2 class="mb-4 reveal">Discover Your Solution</h2>
                     <p class="text-xl reveal" style="animation-delay: 100ms;">Describe your business challenge, and our AI will suggest the best services to help you succeed.</p>
                 </div>
                 <div class="max-w-2xl mx-auto">
@@ -429,51 +229,147 @@
         </section>
 
 
-        <!-- Features Section -->
+        <!-- Services Section -->
         <section id="features" class="py-20 md:py-28 bg-surface">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="max-w-3xl mx-auto text-center pb-12 md:pb-20">
-                    <h2 class="text-white mb-4 reveal">Our Core Services</h2>
+                    <h2 class="mb-4 reveal">Our Core Services</h2>
                     <p class="text-xl reveal" style="animation-delay: 100ms;">Everything you need to build, launch, and grow your digital presence.</p>
                 </div>
-                <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                    <div class="feature-card text-center p-6 rounded-lg reveal">
-                        <div class="flex items-center justify-center h-16 w-16 rounded-full bg-primary/10 mx-auto mb-4 border border-primary/20">
-                            <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122"></path></svg>
-                        </div>
-                        <h3 class="text-white mb-2">Website Design</h3>
-                        <p>Crafting visually stunning and intuitive websites that captivate your audience and reflect your brand's essence.</p>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <!-- Service Card 1 -->
+                    <div class="service-card card p-6 md:p-8 reveal">
+                        <details>
+                            <summary class="flex justify-between items-center cursor-pointer">
+                                <div>
+                                    <h3 class="text-lg font-semibold">Website Design</h3>
+                                    <p class="text-sm mt-1">Conversion-focused UI with brand systems and component libraries.</p>
+                                </div>
+                                <div class="icon-plus text-primary transition-transform duration-300 ml-4 flex-shrink-0"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg></div>
+                            </summary>
+                            <div class="accordion-content" style="height: 0;">
+                                <div class="pt-6 border-t border-border mt-6">
+                                    <ul class="space-y-3 text-muted">
+                                        <li class="flex items-start"><span class="text-primary mr-3 mt-1" aria-hidden="true">✓</span> UX Research & IA</li>
+                                        <li class="flex items-start"><span class="text-primary mr-3 mt-1" aria-hidden="true">✓</span> Wireframes & Prototyping</li>
+                                        <li class="flex items-start"><span class="text-primary mr-3 mt-1" aria-hidden="true">✓</span> Visual Design & Design Systems</li>
+                                        <li class="flex items-start"><span class="text-primary mr-3 mt-1" aria-hidden="true">✓</span> Landing Page CRO</li>
+                                    </ul>
+                                    <a href="#contact" class="text-primary font-semibold text-sm mt-4 inline-block">Get a quote →</a>
+                                </div>
+                            </div>
+                        </details>
                     </div>
-                    <div class="feature-card text-center p-6 rounded-lg reveal" style="animation-delay: 150ms;">
-                        <div class="flex items-center justify-center h-16 w-16 rounded-full bg-primary/10 mx-auto mb-4 border border-primary/20">
-                           <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
-                        </div>
-                        <h3 class="text-white mb-2">Web App Development</h3>
-                        <p>Building robust, scalable, and high-performance web applications tailored to your specific business needs.</p>
+                    <!-- Service Card 2 -->
+                    <div class="service-card card p-6 md:p-8 reveal" style="animation-delay: 100ms;">
+                        <details>
+                            <summary class="flex justify-between items-center cursor-pointer">
+                                <div>
+                                    <h3 class="text-lg font-semibold">Website & Web App Development</h3>
+                                    <p class="text-sm mt-1">Modern stacks, clean code, and performance budgets.</p>
+                                </div>
+                                <div class="icon-plus text-primary transition-transform duration-300 ml-4 flex-shrink-0"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg></div>
+                            </summary>
+                            <div class="accordion-content" style="height: 0;">
+                                <div class="pt-6 border-t border-border mt-6">
+                                    <ul class="space-y-3 text-muted">
+                                        <li class="flex items-start"><span class="text-primary mr-3 mt-1" aria-hidden="true">✓</span> Jamstack/SSR (Next.js, Astro)</li>
+                                        <li class="flex items-start"><span class="text-primary mr-3 mt-1" aria-hidden="true">✓</span> Headless CMS (Sanity, Strapi)</li>
+                                        <li class="flex items-start"><span class="text-primary mr-3 mt-1" aria-hidden="true">✓</span> eCommerce (Shopify, Stripe)</li>
+                                        <li class="flex items-start"><span class="text-primary mr-3 mt-1" aria-hidden="true">✓</span> Component Libraries & Storybook</li>
+                                    </ul>
+                                    <a href="#contact" class="text-primary font-semibold text-sm mt-4 inline-block">Get a quote →</a>
+                                </div>
+                            </div>
+                        </details>
                     </div>
-                    <div class="feature-card text-center p-6 rounded-lg reveal" style="animation-delay: 300ms;">
-                        <div class="flex items-center justify-center h-16 w-16 rounded-full bg-primary/10 mx-auto mb-4 border border-primary/20">
-                            <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
-                        </div>
-                        <h3 class="text-white mb-2">Mobile App Development</h3>
-                        <p>Creating seamless and engaging mobile experiences for iOS and Android that connect you with your users on the go.</p>
+                    <!-- Service Card 3 -->
+                    <div class="service-card card p-6 md:p-8 reveal" style="animation-delay: 200ms;">
+                        <details>
+                            <summary class="flex justify-between items-center cursor-pointer">
+                                <div>
+                                    <h3 class="text-lg font-semibold">Mobile App Development</h3>
+                                    <p class="text-sm mt-1">Cross-platform apps with native-feel performance.</p>
+                                </div>
+                                <div class="icon-plus text-primary transition-transform duration-300 ml-4 flex-shrink-0"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg></div>
+                            </summary>
+                            <div class="accordion-content" style="height: 0;">
+                                <div class="pt-6 border-t border-border mt-6">
+                                    <ul class="space-y-3 text-muted">
+                                        <li class="flex items-start"><span class="text-primary mr-3 mt-1" aria-hidden="true">✓</span> iOS/Android (React Native)</li>
+                                        <li class="flex items-start"><span class="text-primary mr-3 mt-1" aria-hidden="true">✓</span> Offline-first & Sync</li>
+                                        <li class="flex items-start"><span class="text-primary mr-3 mt-1" aria-hidden="true">✓</span> App Store Optimization (ASO)</li>
+                                        <li class="flex items-start"><span class="text-primary mr-3 mt-1" aria-hidden="true">✓</span> Analytics & Crash Reporting</li>
+                                    </ul>
+                                    <a href="#contact" class="text-primary font-semibold text-sm mt-4 inline-block">Get a quote →</a>
+                                </div>
+                            </div>
+                        </details>
                     </div>
-                    <div class="feature-card text-center p-6 rounded-lg reveal" style="animation-delay: 450ms;">
-                        <div class="flex items-center justify-center h-16 w-16 rounded-full bg-primary/10 mx-auto mb-4 border border-primary/20">
-                            <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
-                        </div>
-                        <h3 class="text-white mb-2">Digital Marketing</h3>
-                        <p>Driving measurable growth through performance marketing, SEO, and strategic digital branding campaigns.</p>
+                    <!-- Service Card 4 -->
+                    <div class="service-card card p-6 md:p-8 reveal" style="animation-delay: 300ms;">
+                        <details>
+                            <summary class="flex justify-between items-center cursor-pointer">
+                                <div>
+                                    <h3 class="text-lg font-semibold">Digital & Performance Marketing</h3>
+                                    <p class="text-sm mt-1">Acquisition engines tuned to ROAS and growth.</p>
+                                </div>
+                                <div class="icon-plus text-primary transition-transform duration-300 ml-4 flex-shrink-0"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg></div>
+                            </summary>
+                            <div class="accordion-content" style="height: 0;">
+                                <div class="pt-6 border-t border-border mt-6">
+                                    <ul class="space-y-3 text-muted">
+                                        <li class="flex items-start"><span class="text-primary mr-3 mt-1" aria-hidden="true">✓</span> SEO (On-page/Tech/Content)</li>
+                                        <li class="flex items-start"><span class="text-primary mr-3 mt-1" aria-hidden="true">✓</span> Performance Ads (Meta/Google)</li>
+                                        <li class="flex items-start"><span class="text-primary mr-3 mt-1" aria-hidden="true">✓</span> Analytics & Attribution</li>
+                                        <li class="flex items-start"><span class="text-primary mr-3 mt-1" aria-hidden="true">✓</span> CRO & Experimentation</li>
+                                    </ul>
+                                    <a href="#contact" class="text-primary font-semibold text-sm mt-4 inline-block">Get a quote →</a>
+                                </div>
+                            </div>
+                        </details>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Process Section -->
+        <section id="process" class="py-20 md:py-28">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="max-w-3xl mx-auto text-center pb-12 md:pb-20">
+                    <h2 class="mb-4 reveal">How We Work</h2>
+                    <p class="text-xl reveal" style="animation-delay: 100ms;">A streamlined, transparent process to take your idea from concept to launch.</p>
+                </div>
+                <div class="max-w-4xl mx-auto grid md:grid-cols-4 gap-8 text-center">
+                    <div class="reveal" style="animation-delay: 100ms;">
+                        <div class="text-4xl font-bold text-secondary mb-2">1</div>
+                        <h3 class="text-lg font-semibold mb-2">Discovery & Strategy</h3>
+                        <p class="text-sm">We dive deep into your goals to create a roadmap for success.</p>
+                    </div>
+                    <div class="reveal" style="animation-delay: 200ms;">
+                        <div class="text-4xl font-bold text-secondary mb-2">2</div>
+                        <h3 class="text-lg font-semibold mb-2">Design & Prototype</h3>
+                        <p class="text-sm">We craft user-centric designs and interactive prototypes for feedback.</p>
+                    </div>
+                    <div class="reveal" style="animation-delay: 300ms;">
+                        <div class="text-4xl font-bold text-secondary mb-2">3</div>
+                        <h3 class="text-lg font-semibold mb-2">Build & Test</h3>
+                        <p class="text-sm">Our team builds with clean code and rigorously tests every feature.</p>
+                    </div>
+                    <div class="reveal" style="animation-delay: 400ms;">
+                        <div class="text-4xl font-bold text-secondary mb-2">4</div>
+                        <h3 class="text-lg font-semibold mb-2">Launch & Iterate</h3>
+                        <p class="text-sm">We manage the launch and partner with you for ongoing growth.</p>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- Portfolio Section -->
-        <section id="portfolio" class="py-20 md:py-28">
+        <section id="portfolio" class="py-20 md:py-28 bg-surface">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="max-w-3xl mx-auto text-center pb-12 md:pb-20">
-                    <h2 class="text-white mb-4 reveal">Our Work in Action</h2>
+                    <h2 class="mb-4 reveal">Selected Work</h2>
                     <p class="text-xl reveal" style="animation-delay: 100ms;">An interactive look at some of our live projects.</p>
                 </div>
                 <div id="portfolio-slideshow" class="slideshow-container reveal">
@@ -499,37 +395,68 @@
             </div>
         </section>
 
+        <!-- Case Studies Section -->
+        <section id="case-studies" class="py-20 md:py-28">
+             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="max-w-3xl mx-auto text-center pb-12 md:pb-20">
+                    <h2 class="mb-4 reveal">Case Studies</h2>
+                    <p class="text-xl reveal" style="animation-delay: 100ms;">See how we've helped businesses like yours achieve remarkable results.</p>
+                </div>
+                <div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-8">
+                    <div class="card p-8 flex flex-col reveal" style="animation-delay: 100ms;">
+                        <h3 class="text-xl font-bold mb-2">Hicom India — Organic Sessions Up & Lead Flow Revamp</h3>
+                        <div class="flex flex-wrap gap-x-4 gap-y-2 my-4 text-sm font-semibold">
+                            <span class="bg-primary/10 text-primary px-3 py-1 rounded-full">+148% Organic Sessions</span>
+                            <span class="bg-primary/10 text-primary px-3 py-1 rounded-full">+92% Leads QoQ</span>
+                        </div>
+                        <p class="flex-grow">How PixelPop restructured information architecture, fixed technical SEO, and built content pillars to grow qualified traffic and leads.</p>
+                        <a href="#case-study-hicom" class="btn btn-primary mt-6 self-start case-study-trigger">Read Study</a>
+                    </div>
+                    <div class="card p-8 flex flex-col reveal" style="animation-delay: 200ms;">
+                        <h3 class="text-xl font-bold mb-2">TheBTclub — Performance Marketing to Profitability</h3>
+                         <div class="space-y-2 my-4 text-sm font-semibold">
+                            <div class="flex items-center gap-2"><span class="bg-primary/10 text-primary px-3 py-1 rounded-full" data-count-to="3" data-count-suffix="x">0x</span> Sales within 6 months</div>
+                            <div class="flex items-center gap-2"><span class="bg-primary/10 text-primary px-3 py-1 rounded-full" data-count-to="4" data-count-suffix="x">0x</span> ROAS</div>
+                            <div class="flex items-center gap-2"><span class="bg-primary/10 text-primary px-3 py-1 rounded-full" data-count-to="5" data-count-suffix="%">0%</span> Reduction in RTOs</div>
+                        </div>
+                        <p class="flex-grow">A sprint-led media structure, creative testing, and conversion UX tuned for D2C apparel at scale.</p>
+                        <a href="#case-study-thebtclub" class="btn btn-primary mt-6 self-start case-study-trigger">Read Study</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Contact Form Section -->
         <section id="contact" class="py-20 md:py-28 bg-surface">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="max-w-3xl mx-auto text-center pb-12">
-                    <h2 class="text-white mb-4 reveal">Get in Touch</h2>
+                    <h2 class="mb-4 reveal">Get in Touch</h2>
                     <p class="text-xl reveal" style="animation-delay: 100ms;">Have a project in mind? Let's talk about it.</p>
                 </div>
                 <div class="max-w-2xl mx-auto">
                     <form id="contact-form" class="space-y-6 reveal" style="animation-delay: 200ms;">
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div>
-                                <label for="name" class="block text-sm font-medium text-gray-300 mb-2">Name</label>
+                                <label for="name" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Name</label>
                                 <input type="text" id="name" name="name" required class="form-input">
                             </div>
                             <div>
-                                <label for="company" class="block text-sm font-medium text-gray-300 mb-2">Company Name</label>
+                                <label for="company" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Company Name</label>
                                 <input type="text" id="company" name="company" class="form-input">
                             </div>
                         </div>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div>
-                                <label for="email" class="block text-sm font-medium text-gray-300 mb-2">Email</label>
+                                <label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Email</label>
                                 <input type="email" id="email" name="email" required class="form-input">
                             </div>
                             <div>
-                                <label for="phone" class="block text-sm font-medium text-gray-300 mb-2">Phone Number</label>
+                                <label for="phone" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Phone Number</label>
                                 <input type="tel" id="phone" name="phone" class="form-input">
                             </div>
                         </div>
                         <div>
-                            <label for="services" class="block text-sm font-medium text-gray-300 mb-2">Required Services</label>
+                            <label for="services" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Required Services</label>
                             <select id="services" name="services" required class="form-input form-select">
                                 <!-- Options will be injected by JS -->
                             </select>
@@ -547,14 +474,14 @@
         <section id="faq" class="py-20 md:py-28">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="max-w-3xl mx-auto text-center pb-12">
-                    <h2 class="text-white mb-4 reveal">Your Questions, Answered</h2>
+                    <h2 class="mb-4 reveal">Your Questions, Answered</h2>
                 </div>
                 <div class="max-w-3xl mx-auto">
                     <div class="space-y-4">
                         <div class="faq-item card p-6 reveal">
                             <details>
                                 <summary class="flex justify-between items-center cursor-pointer">
-                                    <h3 class="text-white text-lg font-semibold">How much does a project typically cost?</h3>
+                                    <h3 class="text-lg font-semibold">How much does a project typically cost?</h3>
                                     <div class="icon-plus text-primary transition-transform duration-300"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg></div>
                                 </summary>
                                 <div class="pt-4">
@@ -565,7 +492,7 @@
                         <div class="faq-item card p-6 reveal" style="animation-delay: 100ms;">
                             <details>
                                 <summary class="flex justify-between items-center cursor-pointer">
-                                    <h3 class="text-white text-lg font-semibold">What's included in a standard website package?</h3>
+                                    <h3 class="text-lg font-semibold">What's included in a standard website package?</h3>
                                     <div class="icon-plus text-primary transition-transform duration-300"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg></div>
                                 </summary>
                                 <div class="pt-4">
@@ -576,7 +503,7 @@
                         <div class="faq-item card p-6 reveal" style="animation-delay: 200ms;">
                             <details>
                                 <summary class="flex justify-between items-center cursor-pointer">
-                                    <h3 class="text-white text-lg font-semibold">What happens after my project is launched?</h3>
+                                    <h3 class="text-lg font-semibold">What happens after my project is launched?</h3>
                                     <div class="icon-plus text-primary transition-transform duration-300"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg></div>
                                 </summary>
                                 <div class="pt-4">
@@ -595,13 +522,118 @@
     <footer class="bg-surface border-t border-border">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
             <div class="grid md:grid-cols-3 gap-8">
-                <div class="md:col-span-1"><div class="mb-4"><a href="#" class="text-2xl font-bold text-white">Growth Farm</a></div><p class="text-sm">Your digital-first partner for websites, web apps, mobile apps, and growth.</p></div>
-                <div class="md:col-span-1"><h4 class="text-white font-semibold mb-4">Contact Us</h4><ul class="space-y-2 text-sm"><li><a href="tel:+917007705861" class="hover:text-primary transition-colors">Phone: +91 7007705861</a></li><li><a href="mailto:works.prabhakar.gmail.com" class="hover:text-primary transition-colors">Email: works.prabhakar.gmail.com</a></li><li><a href="https://calendly.com/growth-farm" target="_blank" rel="noopener noreferrer" class="hover:text-primary transition-colors">Book a Call</a></li></ul></div>
-                <div class="md:col-span-1"><h4 class="text-white font-semibold mb-4">Quick Links</h4><ul class="space-y-2 text-sm"><li><a href="#features" class="hover:text-primary transition-colors">Services</a></li><li><a href="#portfolio" class="hover:text-primary transition-colors">Portfolio</a></li><li><a href="#contact" class="hover:text-primary transition-colors">Contact</a></li><li><a href="#faq" class="hover:text-primary transition-colors">FAQ</a></li></ul></div>
+                <div class="md:col-span-1"><div class="mb-4"><a href="#" class="text-2xl font-bold">PixelPop</a></div><p class="text-sm">Your digital-first partner for websites, web apps, mobile apps, and growth.</p></div>
+                <div class="md:col-span-1"><h4 class="font-semibold mb-4">Contact Us</h4><ul class="space-y-2 text-sm"><li><a href="tel:+917007705861" class="hover:text-primary transition-colors">Phone: +91 7007705861</a></li><li><a href="mailto:works.prabhakar.gmail.com" class="hover:text-primary transition-colors">Email: works.prabhakar.gmail.com</a></li><li><a href="https://calendly.com/growth-farm" target="_blank" rel="noopener noreferrer" class="hover:text-primary transition-colors">Book a Call</a></li></ul></div>
+                <div class="md:col-span-1"><h4 class="font-semibold mb-4">Quick Links</h4><ul class="space-y-2 text-sm"><li><a href="#features" class="hover:text-primary transition-colors">Services</a></li><li><a href="#portfolio" class="hover:text-primary transition-colors">Work</a></li><li><a href="#contact" class="hover:text-primary transition-colors">Contact</a></li><li><a href="#faq" class="hover:text-primary transition-colors">FAQ</a></li></ul></div>
             </div>
-            <div class="mt-8 border-t border-border pt-8 text-center text-sm text-gray-500">&copy; 2024 Growth Farm. All rights reserved.</div>
+            <div class="mt-8 border-t border-border pt-8 text-center text-sm text-gray-500">&copy; 2024 PixelPop. All rights reserved.</div>
         </div>
     </footer>
+
+    <!-- Case Study Overlays -->
+    <div id="case-study-hicom" class="case-study-overlay">
+        <button class="case-study-close-btn" aria-label="Close Case Study">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
+        <header class="bg-surface/80 backdrop-blur-sm border-b border-border sticky top-0 z-10">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-20">
+                <a href="#" class="text-2xl font-bold text-inherit case-study-close" aria-label="Back to PixelPop Home">PixelPop</a>
+                <a href="#contact" class="btn btn-primary case-study-close">Start a Project</a>
+            </div>
+        </header>
+        <main>
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24 max-w-4xl">
+                <p class="text-primary font-semibold">Case Study</p>
+                <h1 class="mt-2 mb-8">Hicom India: Organic Traffic & Lead Engine Overhaul</h1>
+                <div class="grid sm:grid-cols-3 gap-8 my-12 text-center">
+                    <div class="bg-surface p-6 rounded-lg border border-border">
+                        <p class="text-3xl md:text-4xl font-bold text-primary">+148%</p>
+                        <p class="text-sm font-semibold mt-1">Organic Sessions in 6 months</p>
+                    </div>
+                    <div class="bg-surface p-6 rounded-lg border border-border">
+                        <p class="text-3xl md:text-4xl font-bold text-primary">+92%</p>
+                        <p class="text-sm font-semibold mt-1">Qualified Leads QoQ</p>
+                    </div>
+                    <div class="bg-surface p-6 rounded-lg border border-border">
+                        <p class="text-3xl md:text-4xl font-bold text-primary">↑ 11.3</p>
+                        <p class="text-sm font-semibold mt-1">Avg. Position Improvement</p>
+                    </div>
+                </div>
+                
+                <div class="prose prose-lg dark:prose-invert max-w-none">
+                    <h2 class="text-2xl font-bold">The Challenge</h2>
+                    <p>Hicom India, a leading industrial supplier, had a technically sound website but struggled with stagnant organic traffic and a low volume of qualified leads. Their digital presence wasn't reflecting their market leadership.</p>
+                    
+                    <h2 class="text-2xl font-bold mt-12">Our Approach</h2>
+                    <p>PixelPop conducted a full-funnel audit, identifying key opportunities in technical SEO, content architecture, and lead capture mechanisms. Our strategy was built on three pillars:</p>
+                    <ul class="list-disc pl-5 space-y-2">
+                        <li><strong>IA Restructuring & Technical SEO:</strong> We overhauled the site structure for better crawlability, fixed Core Web Vitals issues, and cleaned up sitemap and redirect hygiene.</li>
+                        <li><strong>Content & Authority Building:</strong> We developed topic clusters around their core services, creating content pillars that established authority and targeted high-intent keywords.</li>
+                        <li><strong>Lead Flow Revamp:</strong> We redesigned key landing pages, optimized forms, and implemented clear CTAs with proper analytics event tracking to measure success.</li>
+                    </ul>
+
+                    <h2 class="text-2xl font-bold mt-12">The Results</h2>
+                    <p>The strategic overhaul produced significant, measurable growth within two quarters. By focusing on foundational SEO and user experience, we transformed their website into a powerful, self-sustaining lead generation engine.</p>
+                </div>
+
+                <div class="text-center mt-16">
+                    <a href="#contact" class="btn btn-primary case-study-close">Start a Similar Project</a>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div id="case-study-thebtclub" class="case-study-overlay">
+       <button class="case-study-close-btn" aria-label="Close Case Study">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
+       <header class="bg-surface/80 backdrop-blur-sm border-b border-border sticky top-0 z-10">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-20">
+                <a href="#" class="text-2xl font-bold text-inherit case-study-close" aria-label="Back to PixelPop Home">PixelPop</a>
+                <a href="#contact" class="btn btn-primary case-study-close">Start a Project</a>
+            </div>
+        </header>
+        <main>
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24 max-w-4xl">
+                <p class="text-primary font-semibold">Case Study</p>
+                <h1 class="mt-2 mb-8">TheBTclub: Scaling Performance Marketing to Profitability</h1>
+                <div class="grid sm:grid-cols-3 gap-8 my-12 text-center">
+                    <div class="bg-surface p-6 rounded-lg border border-border">
+                        <p class="text-3xl md:text-4xl font-bold text-primary">3x</p>
+                        <p class="text-sm font-semibold mt-1">Sales within 6 months</p>
+                    </div>
+                    <div class="bg-surface p-6 rounded-lg border border-border">
+                        <p class="text-3xl md:text-4xl font-bold text-primary">4x</p>
+                        <p class="text-sm font-semibold mt-1">Return on Ad Spend (ROAS)</p>
+                    </div>
+                    <div class="bg-surface p-6 rounded-lg border border-border">
+                        <p class="text-3xl md:text-4xl font-bold text-primary">5%</p>
+                        <p class="text-sm font-semibold mt-1">Reduction in RTOs</p>
+                    </div>
+                </div>
+                
+                <div class="prose prose-lg dark:prose-invert max-w-none">
+                    <h2 class="text-2xl font-bold">The Challenge</h2>
+                    <p>TheBTclub, a fast-growing D2C apparel brand, faced scaling challenges with their paid media. Rising customer acquisition costs and a high RTO rate were eroding profitability, despite strong product demand.</p>
+                    
+                    <h2 class="text-2xl font-bold mt-12">Our Approach</h2>
+                    <p>PixelPop implemented a sprint-based approach focused on rapid testing and optimization across the entire marketing funnel. The strategy included:</p>
+                    <ul class="list-disc pl-5 space-y-2">
+                        <li><strong>Account Restructuring:</strong> We rebuilt their Meta and Google ad accounts with a tiered campaign structure to separate testing, scaling, and retargeting efforts.</li>
+                        <li><strong>Creative Testing Flywheel:</strong> We established a high-tempo creative testing process to combat ad fatigue and identify winning angles quickly.</li>
+                        <li><strong>Offer & Funnel Optimization:</strong> We analyzed post-purchase data to craft new bundle offers and optimized the checkout flow to simultaneously increase AOV and reduce RTO.</li>
+                    </ul>
+
+                    <h2 class="text-2xl font-bold mt-12">The Results</h2>
+                    <p>Within just eight weeks, our focused sprints dramatically improved campaign efficiency and profitability. The new structure provided a clear path to scale ad spend while maintaining a healthy, blended ROAS.</p>
+                </div>
+
+                <div class="text-center mt-16">
+                    <a href="#contact" class="btn btn-primary case-study-close">Plan My Growth Sprint</a>
+                </div>
+            </div>
+        </main>
+    </div>
 
 
     <script>
@@ -609,30 +641,16 @@
 
         // --- Configuration ---
         const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzpXYXPZ_F3cvTxhfdJGrcmF-g7XLrXvriyhWeLvGrFTny8Xc3jW4M85ue-2Zt3hfhhsg/exec';
-        
         const unframeableSites = ['thebtclub.com', 'fifthpocket.com', 'notrediem.com', 'stradda.com'];
-
-        const portfolioSites = [
-            { "label": "hicomindia.com", "url": "https://hicomindia.com" },
-            { "label": "hikalpaa.org", "url": "https://hikalpaa.org" },
-            { "label": "thebtclub.com", "url": "https://www.thebtclub.com" },
-            { "label": "hixindia.com", "url": "https://hixindia.com" },
-            { "label": "hcinrealty.com", "url": "https://hcinrealty.com" },
-            { "label": "notrediem.com", "url": "https://notrediem.com" },
-            { "label": "fifthpocket.com", "url": "https://fifthpocket.com" },
-            { "label": "stradda.com", "url": "https://stradda.com" }
-        ];
-
-        const services = [
-            "Website Design", "Website Development", "Web App Development",
-            "Mobile App Development", "Digital Marketing", "Performance Marketing Services",
-            "Digital Branding", "SEO & GEO"
-        ];
+        const portfolioSites = [ { "label": "hicomindia.com", "url": "https://hicomindia.com" }, { "label": "hikalpaa.org", "url": "https://hikalpaa.org" }, { "label": "thebtclub.com", "url": "https://www.thebtclub.com" }, { "label": "hixindia.com", "url": "https://hixindia.com" }, { "label": "hcinrealty.com", "url": "https://hcinrealty.com" }, { "label": "notrediem.com", "url": "https://notrediem.com" }, { "label": "fifthpocket.com", "url": "https://fifthpocket.com" }, { "label": "stradda.com", "url": "https://stradda.com" } ];
+        const services = [ "Website Design", "Website Development", "Web App Development", "Mobile App Development", "Digital Marketing", "Performance Marketing Services", "Digital Branding", "SEO & GEO" ];
 
         // --- Mobile Navigation ---
         const hamburger = document.getElementById('hamburger');
         const mobileNav = document.getElementById('mobile-nav');
         const mobileNavLinks = mobileNav.querySelectorAll('a');
+        const firstFocusableEl = hamburger;
+        const lastFocusableEl = mobileNavLinks[mobileNavLinks.length - 1];
         const toggleMobileNav = () => {
             const isExpanded = hamburger.getAttribute('aria-expanded') === 'true';
             hamburger.setAttribute('aria-expanded', !isExpanded);
@@ -640,32 +658,65 @@
                 mobileNav.classList.remove('hidden');
                 void mobileNav.offsetWidth; 
                 mobileNav.style.maxHeight = mobileNav.scrollHeight + 'px';
+                mobileNavLinks[0].focus();
             } else {
                 mobileNav.style.maxHeight = '0';
-                mobileNav.addEventListener('transitionend', () => {
-                    if (mobileNav.style.maxHeight === '0px') mobileNav.classList.add('hidden');
-                }, { once: true });
+                hamburger.focus();
+            }
+        };
+        const handleNavTransitionEnd = () => { if (mobileNav.style.maxHeight === '0px') { mobileNav.classList.add('hidden'); } };
+        const handleNavKeyDown = (e) => {
+            if (e.key !== 'Tab') return;
+            if (e.shiftKey) {
+                if (document.activeElement === firstFocusableEl) { lastFocusableEl.focus(); e.preventDefault(); }
+            } else {
+                if (document.activeElement === lastFocusableEl) { firstFocusableEl.focus(); e.preventDefault(); }
             }
         };
         hamburger.addEventListener('click', toggleMobileNav);
-        mobileNavLinks.forEach(link => link.addEventListener('click', () => {
-            if (hamburger.getAttribute('aria-expanded') === 'true') toggleMobileNav();
-        }));
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && hamburger.getAttribute('aria-expanded') === 'true') toggleMobileNav();
-        });
+        mobileNav.addEventListener('transitionend', handleNavTransitionEnd);
+        mobileNav.addEventListener('keydown', handleNavKeyDown);
+        mobileNavLinks.forEach(link => link.addEventListener('click', () => { if (hamburger.getAttribute('aria-expanded') === 'true') toggleMobileNav(); }));
+        document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && hamburger.getAttribute('aria-expanded') === 'true') toggleMobileNav(); });
 
         // --- Intersection Observer for Animations ---
-        const revealElements = document.querySelectorAll('.reveal');
-        const observer = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    observer.unobserve(entry.target);
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (!prefersReducedMotion) {
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        // Counter animation
+                        entry.target.querySelectorAll('[data-count-to]').forEach(counter => {
+                            animateCountUp(counter);
+                        });
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { root: null, rootMargin: '0px', threshold: 0.1 });
+            document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        } else {
+            document.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
+        }
+        
+        function animateCountUp(el) {
+            const target = parseInt(el.dataset.countTo, 10);
+            const suffix = el.dataset.countSuffix || '';
+            let current = 0;
+            const duration = 1500;
+            const increment = target / (duration / 16);
+            
+            const updateCount = () => {
+                current += increment;
+                if (current < target) {
+                    el.textContent = Math.ceil(current) + suffix;
+                    requestAnimationFrame(updateCount);
+                } else {
+                    el.textContent = target + suffix;
                 }
-            });
-        }, { root: null, rootMargin: '0px', threshold: 0.1 });
-        revealElements.forEach(el => observer.observe(el));
+            };
+            requestAnimationFrame(updateCount);
+        }
 
         // --- Active Navigation Link highlighting on Scroll ---
         const sections = document.querySelectorAll('section[id]');
@@ -684,198 +735,145 @@
         }, { rootMargin: `-${headerHeight}px 0px -50% 0px` });
         sections.forEach(section => scrollObserver.observe(section));
         
+        // --- Smooth Accordion for Services ---
+        document.querySelectorAll('.service-card details').forEach((detail) => {
+            const summary = detail.querySelector('summary');
+            const content = detail.querySelector('.accordion-content');
+            summary.addEventListener('click', (event) => {
+                event.preventDefault();
+                if (detail.open) {
+                    content.style.height = `${content.scrollHeight}px`;
+                    requestAnimationFrame(() => { content.style.height = '0px'; });
+                    detail.removeAttribute('open');
+                } else {
+                    content.style.height = `${content.scrollHeight}px`;
+                    content.addEventListener('transitionend', () => {
+                        if (detail.open) content.style.height = 'auto';
+                    }, { once: true });
+                    detail.setAttribute('open', '');
+                }
+            });
+        });
+
         // --- AI Solution Finder ---
         const aiAnalyzeBtn = document.getElementById('ai-analyze-btn');
         const aiTextarea = document.getElementById('ai-solution-textarea');
         const aiResponseEl = document.getElementById('ai-response');
-
         const problemPatterns = {
-            'ad-performance': {
-                keywords: ['roas', 'cpc', 'ads not working', 'poor return', 'ad spend'],
-                analysis: 'Poor ad performance can stem from several factors, such as creative fatigue, audience targeting issues, or inefficient campaign structures.',
-                services: ['Performance Marketing Services', 'Digital Branding']
-            },
-            'low-traffic': {
-                keywords: ['no traffic', 'low visitors', "can't find on google", 'seo'],
-                analysis: 'Low website traffic is often related to search engine visibility or a lack of effective marketing channels.',
-                services: ['SEO & GEO', 'Digital Marketing']
-            },
-            'bad-design': {
-                keywords: ['looks old', 'bad design', 'not user-friendly', 'confusing ui', 'high bounce rate'],
-                analysis: 'An outdated or confusing design can lead to a poor user experience and high bounce rates, directly impacting conversions.',
-                services: ['Website Design']
-            },
-            'new-build': {
-                keywords: ['need a website', 'build an app', 'sell online', 'e-commerce', 'new site'],
-                analysis: 'Building a new digital platform requires a clear strategy for both development and user acquisition.',
-                services: ['Website Development', 'Web App Development', 'Mobile App Development']
-            }
+            'ad-performance': { keywords: ['roas', 'cpc', 'ads not working', 'poor return', 'ad spend'], analysis: 'Poor ad performance can stem from several factors, such as creative fatigue, audience targeting issues, or inefficient campaign structures.', services: ['Performance Marketing Services', 'Digital Branding'] },
+            'low-traffic': { keywords: ['no traffic', 'low visitors', "can't find on google", 'seo'], analysis: 'Low website traffic is often related to search engine visibility or a lack of effective marketing channels.', services: ['SEO & GEO', 'Digital Marketing'] },
+            'bad-design': { keywords: ['looks old', 'bad design', 'not user-friendly', 'confusing ui', 'high bounce rate'], analysis: 'An outdated or confusing design can lead to a poor user experience and high bounce rates, directly impacting conversions.', services: ['Website Design'] },
+            'new-build': { keywords: ['need a website', 'build an app', 'sell online', 'e-commerce', 'new site'], analysis: 'Building a new digital platform requires a clear strategy for both development and user acquisition.', services: ['Website Development', 'Web App Development', 'Mobile App Development'] }
         };
-
-        aiAnalyzeBtn.addEventListener('click', () => {
-            const problem = aiTextarea.value.toLowerCase();
-            if (problem.trim() === '') {
-                aiResponseEl.innerHTML = 'Please describe your problem first.';
-                aiResponseEl.style.display = 'block';
-                return;
-            }
-
-            let matchedPattern = null;
-            for (const key in problemPatterns) {
-                const pattern = problemPatterns[key];
-                if (pattern.keywords.some(kw => problem.includes(kw))) {
-                    matchedPattern = pattern;
-                    break;
+        if(aiAnalyzeBtn) {
+            aiAnalyzeBtn.addEventListener('click', () => {
+                const problem = aiTextarea.value.toLowerCase();
+                if (problem.trim() === '') { aiResponseEl.innerHTML = 'Please describe your problem first.'; aiResponseEl.style.display = 'block'; return; }
+                let matchedPattern = null;
+                for (const key in problemPatterns) { if (problemPatterns[key].keywords.some(kw => problem.includes(kw))) { matchedPattern = problemPatterns[key]; break; } }
+                let responseHTML;
+                if (matchedPattern) {
+                    responseHTML = `<p>${matchedPattern.analysis}</p><p class="mt-4">Based on this, we recommend exploring our following services:</p><ul class="list-disc list-inside mt-2">`;
+                    matchedPattern.services.forEach(service => { responseHTML += `<li><strong>${service}</strong></li>`; });
+                    responseHTML += `</ul><p class="mt-4">To discuss this further, please fill out our contact form or book a call.</p>`;
+                } else {
+                    responseHTML = `<p>Thank you for your interest. To get a detailed analysis and solution, please fill out the contact form below, and our experts will get in touch with you shortly.</p>`;
                 }
-            }
-
-            let responseHTML;
-            if (matchedPattern) {
-                responseHTML = `<p>${matchedPattern.analysis}</p><p class="mt-4">Based on this, we recommend exploring our following services:</p><ul class="list-disc list-inside mt-2">`;
-                matchedPattern.services.forEach(service => {
-                    responseHTML += `<li><strong>${service}</strong></li>`;
-                });
-                responseHTML += `</ul><p class="mt-4">To discuss this further, please fill out our contact form or book a call.</p>`;
-            } else {
-                responseHTML = `<p>Thank you for your interest. To get a detailed analysis and solution, please fill out the contact form below, and our experts will get in touch with you shortly.</p>`;
-            }
-            
-            aiResponseEl.innerHTML = responseHTML;
-            aiResponseEl.style.display = 'block';
-        });
-
+                aiResponseEl.innerHTML = responseHTML; aiResponseEl.style.display = 'block';
+            });
+        }
 
         // --- Portfolio Slideshow ---
-        const slideshowWrapper = document.querySelector('.slideshow-wrapper');
-        if (slideshowWrapper) {
+        const slideshowContainer = document.getElementById('portfolio-slideshow');
+        if (slideshowContainer) {
+            const slideshowWrapper = slideshowContainer.querySelector('.slideshow-wrapper');
             portfolioSites.forEach(site => {
                 const slide = document.createElement('div');
                 slide.className = 'slide';
-                
                 const isUnframeable = unframeableSites.some(unframeable => site.url.includes(unframeable));
-
                 if (isUnframeable) {
-                    slide.innerHTML = `
-                        <div class="slide-placeholder">
-                            <p class="text-lg text-muted mb-4">This site does not allow live previews.</p>
-                            <a href="${site.url}" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Visit Live Site</a>
-                        </div>
-                    `;
+                    slide.innerHTML = `<div class="slide-placeholder"><p class="text-lg text-muted mb-4">This site does not allow live previews.</p><a href="${site.url}" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Visit Live Site</a></div>`;
                 } else {
-                    slide.innerHTML = `
-                        <div class="slide-loader"><div class="spinner"></div></div>
-                        <iframe loading="lazy" data-src="${site.url}" title="${site.label} homepage" sandbox="allow-scripts allow-same-origin"></iframe>
-                    `;
+                    slide.innerHTML = `<div class="slide-loader"><div class="spinner"></div></div><iframe loading="lazy" data-src="${site.url}" title="${site.label} homepage" sandbox="allow-scripts allow-same-origin"></iframe>`;
                 }
                 slideshowWrapper.appendChild(slide);
             });
-
-            const slides = document.querySelectorAll('.slide');
+            const slides = slideshowContainer.querySelectorAll('.slide');
             const prevButton = document.getElementById('prev-slide');
             const nextButton = document.getElementById('next-slide');
             const slideLabel = document.getElementById('slide-label');
             const slideLink = document.getElementById('slide-link');
-            let currentIndex = 0;
-
+            let currentIndex = 0, touchstartX = 0, touchendX = 0;
             const updateSlide = (index) => {
                 slideshowWrapper.style.transform = `translateX(-${index * 100}%)`;
                 const currentSite = portfolioSites[index];
                 slideLabel.textContent = currentSite.label;
                 slideLink.href = currentSite.url;
-
-                // Lazy load iframe if it exists
                 const iframe = slides[index].querySelector('iframe');
                 if (iframe) {
                     const loader = slides[index].querySelector('.slide-loader');
                     if (iframe.src === '' && iframe.dataset.src) {
                         iframe.src = iframe.dataset.src;
-                        iframe.onload = () => {
-                            if(loader) {
-                               loader.style.opacity = '0';
-                               setTimeout(() => loader.style.display = 'none', 300);
-                            }
-                        };
+                        iframe.onload = () => { if(loader) { loader.style.opacity = '0'; setTimeout(() => loader.style.display = 'none', 300); } };
                     }
                 }
             };
-            
-            prevButton.addEventListener('click', () => {
-                currentIndex = (currentIndex > 0) ? currentIndex - 1 : slides.length - 1;
-                updateSlide(currentIndex);
-            });
-            
-            nextButton.addEventListener('click', () => {
-                currentIndex = (currentIndex < slides.length - 1) ? currentIndex + 1 : 0;
-                updateSlide(currentIndex);
-            });
-
-            // Initial load
+            const showNext = () => { currentIndex = (currentIndex < slides.length - 1) ? currentIndex + 1 : 0; updateSlide(currentIndex); };
+            const showPrev = () => { currentIndex = (currentIndex > 0) ? currentIndex - 1 : slides.length - 1; updateSlide(currentIndex); };
+            prevButton.addEventListener('click', showPrev);
+            nextButton.addEventListener('click', showNext);
+            slideshowContainer.addEventListener('touchstart', e => { touchstartX = e.changedTouches[0].screenX; }, { passive: true });
+            slideshowContainer.addEventListener('touchend', e => { touchendX = e.changedTouches[0].screenX; if (touchendX < touchstartX - 50) showNext(); if (touchendX > touchstartX + 50) showPrev(); });
             updateSlide(0);
         }
+
+        // --- Case Study Modal Logic ---
+        document.querySelectorAll('.case-study-trigger').forEach(trigger => {
+            trigger.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetId = trigger.getAttribute('href').substring(1);
+                const overlay = document.getElementById(targetId);
+                if (overlay) {
+                    document.body.classList.add('case-study-open');
+                    overlay.classList.add('active');
+                    overlay.scrollTop = 0;
+                }
+            });
+        });
+
+        document.querySelectorAll('.case-study-close, .case-study-close-btn').forEach(closer => {
+            closer.addEventListener('click', (e) => {
+                e.preventDefault();
+                const overlay = closer.closest('.case-study-overlay');
+                if (overlay) {
+                    document.body.classList.remove('case-study-open');
+                    overlay.classList.remove('active');
+                }
+            });
+        });
+
 
         // --- Contact Form ---
         const contactForm = document.getElementById('contact-form');
         const servicesSelect = document.getElementById('services');
         const submitButton = document.getElementById('submit-button');
         const formMessage = document.getElementById('form-message');
-
-        // Populate services dropdown
-        if (servicesSelect) {
-            services.forEach(service => {
-                const option = document.createElement('option');
-                option.value = service;
-                option.textContent = service;
-                servicesSelect.appendChild(option);
-            });
-        }
-
+        if (servicesSelect) { services.forEach(service => { const option = document.createElement('option'); option.value = service; option.textContent = service; servicesSelect.appendChild(option); }); }
         if (contactForm) {
             contactForm.addEventListener('submit', (e) => {
                 e.preventDefault();
-                
-                if (!GOOGLE_SCRIPT_URL || GOOGLE_SCRIPT_URL === 'PASTE_YOUR_GOOGLE_SCRIPT_URL_HERE') {
-                    console.error("Google Script URL is not set. Form submission is disabled.");
-                    formMessage.textContent = 'Form submission is currently disabled.';
-                    formMessage.className = 'error';
-                    formMessage.style.display = 'block';
-                    return;
-                }
-
+                if (!GOOGLE_SCRIPT_URL || GOOGLE_SCRIPT_URL === 'PASTE_YOUR_GOOGLE_SCRIPT_URL_HERE') { console.error("Google Script URL is not set."); formMessage.textContent = 'Form submission is currently disabled.'; formMessage.className = 'error'; formMessage.style.display = 'block'; return; }
                 const formData = new FormData(contactForm);
                 const originalButtonText = submitButton.textContent;
-                submitButton.disabled = true;
-                submitButton.textContent = 'Sending...';
-                formMessage.style.display = 'none';
-
-                fetch(GOOGLE_SCRIPT_URL, {
-                    method: 'POST',
-                    body: formData
-                })
+                submitButton.disabled = true; submitButton.textContent = 'Sending...'; formMessage.style.display = 'none';
+                fetch(GOOGLE_SCRIPT_URL, { method: 'POST', body: formData })
                 .then(res => res.json())
-                .then(data => {
-                    if (data.result === 'success') {
-                        contactForm.reset();
-                        formMessage.textContent = 'Thank you! Your message has been sent.';
-                        formMessage.className = 'success';
-                    } else {
-                        throw new Error(data.message || 'An unknown error occurred.');
-                    }
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                    formMessage.textContent = 'Sorry, there was an error sending your message. Please try again later.';
-                    formMessage.className = 'error';
-                })
-                .finally(() => {
-                    submitButton.disabled = false;
-                    submitButton.textContent = originalButtonText;
-                    formMessage.style.display = 'block';
-                    setTimeout(() => { formMessage.style.display = 'none'; }, 5000);
-                });
+                .then(data => { if (data.result === 'success') { contactForm.reset(); formMessage.textContent = 'Thank you! Your message has been sent.'; formMessage.className = 'success'; } else { throw new Error(data.message || 'An unknown error occurred.'); } })
+                .catch(error => { console.error('Error:', error); formMessage.textContent = 'Sorry, there was an error sending your message. Please try again later.'; formMessage.className = 'error'; })
+                .finally(() => { submitButton.disabled = false; submitButton.textContent = originalButtonText; formMessage.style.display = 'block'; setTimeout(() => { formMessage.style.display = 'none'; }, 5000); });
             });
         }
     });
     </script>
 </body>
 </html>
-
