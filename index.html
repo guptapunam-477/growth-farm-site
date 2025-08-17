@@ -16,6 +16,10 @@
     <meta name="twitter:description" content="Struggling with low ROAS? PixelPop provides expert performance marketing and web app development to boost your ROI.">
     <meta name="twitter:image" content="https://placehold.co/1200x630/EAF4FF/0B1220?text=PixelPop">
 
+    <!-- Favicon -->
+    <link rel="icon" href="assets/pixelpop-logo.png">
+    <link rel="apple-touch-icon" href="assets/pixelpop-logo.png">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
@@ -70,6 +74,8 @@
         /* --- Header & Navigation --- */
         header { backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); background-color: rgba(247, 250, 255, 0.8); border-bottom: 1px solid var(--border); }
         @media (prefers-color-scheme: dark) { header { background-color: rgba(11, 18, 32, 0.75); } }
+        #header-logo { filter: invert(1); transition: filter 0.3s ease; }
+        @media (prefers-color-scheme: dark) { #header-logo { filter: none; } }
         section { scroll-margin-top: 80px; }
         nav a.active { color: var(--primary); }
         
@@ -150,11 +156,12 @@
                     <!-- PixelPop Logo -->
                     <a href="/" aria-label="PixelPop Home" style="display:inline-block; line-height:0;">
                       <img
+                        id="header-logo"
                         src="assets/pixelpop-logo.png"
                         alt="PixelPop"
                         width="1024"
                         height="1024"
-                        style="height:48px; width:auto; display:block;"
+                        style="height:56px; width:auto; display:block;"
                         decoding="async"
                         loading="eager" />
                     </a>
