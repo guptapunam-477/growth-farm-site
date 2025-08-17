@@ -42,7 +42,7 @@
         /* --- Base Styles --- */
         html { scroll-behavior: smooth; background-color: var(--bg); color: var(--text); font-family: var(--font-primary); }
         body { overflow-x: hidden; background-image: linear-gradient(180deg, var(--gradient-from) 0%, var(--gradient-to) 100%); background-attachment: fixed; }
-        body.case-study-open { overflow: hidden; }
+        body.no-scroll { overflow: hidden; }
         body::after { content: ''; position: fixed; top: 0; left: 0; right: 0; bottom: 0; width: 100vw; height: 100vh; background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800"><filter id="noise-filter"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="4" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23noise-filter)"/></svg>'); opacity: 0.015; z-index: -1; pointer-events: none; }
         @media (prefers-color-scheme: dark) { body::after { opacity: 0.03; } }
         h1, h2, h3, h4, h5, h6 { font-family: var(--font-display); font-weight: 700; color: var(--text); }
@@ -171,15 +171,15 @@
                     <a href="https://calendly.com/growth-farm" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Book a Call</a>
                 </div>
                 <div class="flex md:hidden">
-                    <button id="hamburger" class="hamburger p-2 -mr-2" aria-controls="mobile-nav" aria-expanded="false">
+                    <button id="hamburger" class="hamburger p-2" aria-controls="mobile-nav" aria-expanded="false">
                         <span class="sr-only">Open main menu</span>
                         <svg class="w-6 h-6 fill-current text-gray-700 dark:text-gray-300" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect y="4" width="24" height="2" rx="1"/><rect y="11" width="24" height="2" rx="1"/><rect y="18" width="24" height="2" rx="1"/></svg>
                     </button>
                 </div>
             </div>
         </div>
-        <div id="mobile-nav" class="hidden md:hidden fixed top-0 left-0 w-full h-full bg-surface z-50 transition-all duration-300 ease-in-out" style="max-height: 0; overflow: hidden;">
-            <nav class="p-4 pt-20 h-full">
+        <div id="mobile-nav" class="hidden md:hidden fixed top-0 left-0 w-full h-full bg-surface z-40 transition-all duration-300 ease-in-out" style="max-height: 0; overflow: hidden;">
+            <nav class="p-4 pt-24 h-full">
                 <ul class="flex flex-col space-y-2 h-full">
                     <li><a href="#features" class="block font-medium text-gray-700 dark:text-gray-300 hover:text-primary px-4 py-3 rounded-md">Services</a></li>
                     <li><a href="#portfolio" class="block font-medium text-gray-700 dark:text-gray-300 hover:text-primary px-4 py-3 rounded-md">Work</a></li>
@@ -198,9 +198,9 @@
         <section id="hero" class="relative pt-24 pb-20 md:pt-32 md:pb-28">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center md:text-left">
                 <div class="max-w-xl">
-                    <p class="kicker mb-4 reveal">Digital First Agency
+                    <p class="kicker mb-4 reveal">Digital First Agency</p>
                     <h1 class="mb-6 reveal" style="animation-delay: 100ms;">Ship a stunning, high-converting site—fast.</h1>
-                    <p class="text-xl max-w-2xl mb-8 reveal" style="animation-delay: 200ms;">PixelPop designs and builds modern websites, apps, and growth engines with clean UI, tasteful motion, and measurable ROI.</p>
+                    <p class="text-xl max-w-2xl mb-8 reveal" style="animation-delay: 200ms;">PixelPop designs and builds modern websites, apps, and growth engines with clean UI, tasteful motion, and measurable ROI. If you're looking for performance marketing or web app development to increase ROAS, you're in the right place.</p>
                     <div class="flex flex-col sm:flex-row justify-center md:justify-start gap-4 reveal" style="animation-delay: 300ms;">
                         <a href="https://calendly.com/growth-farm" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Book a Call</a>
                         <a href="#features" class="btn btn-secondary">See Services</a>
@@ -226,7 +226,7 @@
                 <div class="max-w-2xl mx-auto">
                     <div class="reveal" style="animation-delay: 200ms;">
                         <label for="ai-solution-textarea" class="sr-only">Describe your problem</label>
-                        <textarea id="ai-solution-textarea" class="form-input" placeholder="e.g., 'I need a new e-commerce website to sell my products online and attract more customers.'"></textarea>
+                        <textarea id="ai-solution-textarea" class="form-input" placeholder="e.g., 'My ROAS is low and I need a better digital marketing strategy.'"></textarea>
                         <div class="text-center mt-6">
                             <button id="ai-analyze-btn" class="btn btn-primary">Analyze My Problem</button>
                         </div>
@@ -663,11 +663,13 @@
             const isExpanded = hamburger.getAttribute('aria-expanded') === 'true';
             hamburger.setAttribute('aria-expanded', !isExpanded);
             if (!isExpanded) {
+                document.body.classList.add('no-scroll');
                 mobileNav.classList.remove('hidden');
                 void mobileNav.offsetWidth; 
                 mobileNav.style.maxHeight = '100vh';
                 mobileNavLinks[0].focus();
             } else {
+                document.body.classList.remove('no-scroll');
                 mobileNav.style.maxHeight = '0';
                 hamburger.focus();
             }
