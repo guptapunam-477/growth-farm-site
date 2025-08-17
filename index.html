@@ -3,17 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PixelPop — Digital-First Partner</title>
-    <meta name="description" content="PixelPop designs and builds modern websites, apps, and growth engines with clean UI, tasteful motion, and measurable ROI. We specialize in Jamstack, Headless CMS, and Performance Marketing.">
+    <title>PixelPop — Performance Marketing & Web App Development to Increase ROAS</title>
+    <meta name="description" content="PixelPop is a digital agency specializing in performance marketing, web app development, and strategies to increase ROAS. We build high-converting websites and growth engines.">
     
     <!-- SEO & Social Sharing Tags -->
-    <meta property="og:title" content="PixelPop — Digital-First Partner">
-    <meta property="og:description" content="Ship a stunning, high-converting site—fast. We design and build modern websites, apps, and growth engines.">
+    <meta property="og:title" content="PixelPop — Performance Marketing & Web App Development">
+    <meta property="og:description" content="Struggling with low ROAS? PixelPop provides expert performance marketing and web app development to boost your ROI.">
     <meta property="og:type" content="website">
     <meta property="og:image" content="https://placehold.co/1200x630/EAF4FF/0B1220?text=PixelPop">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="PixelPop — Digital-First Partner">
-    <meta name="twitter:description" content="Ship a stunning, high-converting site—fast. We design and build modern websites, apps, and growth engines.">
+    <meta name="twitter:title" content="PixelPop — Performance Marketing & Web App Development">
+    <meta name="twitter:description" content="Struggling with low ROAS? PixelPop provides expert performance marketing and web app development to boost your ROI.">
     <meta name="twitter:image" content="https://placehold.co/1200x630/EAF4FF/0B1220?text=PixelPop">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -112,7 +112,7 @@
         #ai-response strong { color: var(--primary); }
         .case-study-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background-color: var(--bg); z-index: 100; overflow-y: auto; opacity: 0; transform: translateY(20px); transition: opacity 0.3s ease, transform 0.3s ease; pointer-events: none; }
         .case-study-overlay.active { opacity: 1; transform: translateY(0); pointer-events: auto; }
-        .case-study-close-btn { position: fixed; top: 1rem; right: 1rem; z-index: 110; width: 44px; height: 44px; background-color: var(--surface); border: 1px solid var(--border); border-radius: 9999px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.2s ease; }
+        .case-study-close-btn { position: fixed; top: 1rem; left: 1rem; z-index: 110; width: 44px; height: 44px; background-color: var(--surface); border: 1px solid var(--border); border-radius: 9999px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.2s ease; }
         .case-study-close-btn:hover { transform: scale(1.1); background-color: var(--card); }
     </style>
     <script type="application/ld+json">
@@ -147,8 +147,16 @@
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-20">
                 <div class="flex-shrink-0">
-                    <a href="#" class="text-2xl font-bold text-inherit" aria-label="PixelPop Home">
-                       PixelPop
+                    <!-- PixelPop Logo -->
+                    <a href="/" aria-label="PixelPop Home" style="display:inline-block; line-height:0;">
+                      <img
+                        src="assets/pixelpop-logo.png"
+                        alt="PixelPop"
+                        width="1024"
+                        height="1024"
+                        style="height:48px; width:auto; display:block;"
+                        decoding="async"
+                        loading="eager" />
                     </a>
                 </div>
                 <nav id="desktop-nav" class="hidden md:flex items-center" role="navigation" aria-label="Primary">
@@ -170,14 +178,14 @@
                 </div>
             </div>
         </div>
-        <div id="mobile-nav" class="hidden md:hidden absolute top-full left-0 w-full bg-surface border-t border-border transition-all duration-300 ease-in-out" style="max-height: 0; overflow: hidden;">
-            <nav class="p-4">
-                <ul class="flex flex-col space-y-2">
+        <div id="mobile-nav" class="hidden md:hidden fixed top-0 left-0 w-full h-full bg-surface z-50 transition-all duration-300 ease-in-out" style="max-height: 0; overflow: hidden;">
+            <nav class="p-4 pt-20 h-full">
+                <ul class="flex flex-col space-y-2 h-full">
                     <li><a href="#features" class="block font-medium text-gray-700 dark:text-gray-300 hover:text-primary px-4 py-3 rounded-md">Services</a></li>
                     <li><a href="#portfolio" class="block font-medium text-gray-700 dark:text-gray-300 hover:text-primary px-4 py-3 rounded-md">Work</a></li>
                     <li><a href="#contact" class="block font-medium text-gray-700 dark:text-gray-300 hover:text-primary px-4 py-3 rounded-md">Contact</a></li>
                     <li><a href="#faq" class="block font-medium text-gray-700 dark:text-gray-300 hover:text-primary px-4 py-3 rounded-md">FAQ</a></li>
-                    <li><a href="https://calendly.com/growth-farm" target="_blank" rel="noopener noreferrer" class="btn btn-primary w-full mt-4">Book a Call</a></li>
+                    <li class="mt-auto"><a href="https://calendly.com/growth-farm" target="_blank" rel="noopener noreferrer" class="btn btn-primary w-full mt-4">Book a Call</a></li>
                 </ul>
             </nav>
         </div>
@@ -190,7 +198,7 @@
         <section id="hero" class="relative pt-24 pb-20 md:pt-32 md:pb-28">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center md:text-left">
                 <div class="max-w-xl">
-                    <p class="kicker mb-4 reveal">Digital-First Studio</p>
+                    <p class="kicker mb-4 reveal">Digital First Agency
                     <h1 class="mb-6 reveal" style="animation-delay: 100ms;">Ship a stunning, high-converting site—fast.</h1>
                     <p class="text-xl max-w-2xl mb-8 reveal" style="animation-delay: 200ms;">PixelPop designs and builds modern websites, apps, and growth engines with clean UI, tasteful motion, and measurable ROI.</p>
                     <div class="flex flex-col sm:flex-row justify-center md:justify-start gap-4 reveal" style="animation-delay: 300ms;">
@@ -503,11 +511,11 @@
                         <div class="faq-item card p-6 reveal" style="animation-delay: 200ms;">
                             <details>
                                 <summary class="flex justify-between items-center cursor-pointer">
-                                    <h3 class="text-lg font-semibold">What happens after my project is launched?</h3>
+                                    <h3 class="text-lg font-semibold">How can you help increase my ROAS?</h3>
                                     <div class="icon-plus text-primary transition-transform duration-300"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg></div>
                                 </summary>
                                 <div class="pt-4">
-                                    <p>We offer a 30-day post-launch support period to fix any bugs. Beyond that, we provide ongoing monthly maintenance and support retainers to keep your site secure, updated, and performing optimally. We can also partner with you on a growth retainer for continuous improvements and marketing efforts.</p>
+                                    <p>We increase ROAS through a holistic approach that combines expert performance marketing with conversion-focused web design and development. By optimizing your ad campaigns, improving your landing pages, and ensuring a seamless user experience, we help you convert more visitors into customers, thereby increasing your return on ad spend.</p>
                                 </div>
                             </details>
                         </div>
@@ -657,7 +665,7 @@
             if (!isExpanded) {
                 mobileNav.classList.remove('hidden');
                 void mobileNav.offsetWidth; 
-                mobileNav.style.maxHeight = mobileNav.scrollHeight + 'px';
+                mobileNav.style.maxHeight = '100vh';
                 mobileNavLinks[0].focus();
             } else {
                 mobileNav.style.maxHeight = '0';
